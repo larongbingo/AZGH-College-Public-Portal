@@ -1,0 +1,6 @@
+- Messages/Announcement - public
+- User Information
+- Password (account)
+- Section Offering - required to be logged in
+- Registration - registration of new students
+- Schedule - schedule of the student
