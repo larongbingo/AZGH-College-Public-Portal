@@ -1,0 +1,16 @@
+#aboveFold {
+  padding: 10px;
+  background-color: black;
+}
+
+#above-fold-container {
+  position: relative;
+}
+
+#school-name {
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  color: whitesmoke;
+}
