@@ -18,21 +18,28 @@ const AboveTheFold: FunctionComponent = () => (
 );
 
 const Features: FunctionComponent = () => (
-  <Row>
-    <Col>
-      <h2>Why choose AZGH College?</h2>
-      <ul>
-        <li>Proven track record</li>
-        <li>Premiere source of highly trained staff</li>
-        <li>Proven and effective training method</li>
-        <li>Guaranteed and extensive industry valid curriculum</li>
-        <li>Seasoned and Professional Faculty</li>
-        <li>Internship/OJT Assistance</li>
-        <li>Talent showcase opportunity</li>
-        <li>Medical insurance at A. Zarate General Hospital</li>
-      </ul>
-    </Col>
-  </Row>
+  <>
+    <Row>
+      <Col>
+        <h2>Why choose AZGH College?</h2>
+        <ul>
+          <li>Proven track record</li>
+          <li>Premiere source of highly trained staff</li>
+          <li>Proven and effective training method</li>
+          <li>Guaranteed and extensive industry valid curriculum</li>
+          <li>Seasoned and Professional Faculty</li>
+          <li>Internship/OJT Assistance</li>
+          <li>Talent showcase opportunity</li>
+          <li>Medical insurance at A. Zarate General Hospital</li>
+        </ul>
+      </Col>
+    </Row>
+    <Row>
+      <Col>
+        <h4>We offer: Senior Highschool Strands, 2 Year Diploma Courses, and Certificate Courses</h4>
+      </Col>
+    </Row>
+  </>
 );
 
 const Announcements: FunctionComponent = () => (
