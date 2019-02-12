@@ -18,7 +18,7 @@ export class PageNavbar extends Component {
           {
             // @ts-ignore
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav>
+              <Nav className="mr-auto">
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/courses">Courses</Nav.Link>
                 <Nav.Link href="/about">About Us</Nav.Link>
