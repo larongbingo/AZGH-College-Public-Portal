@@ -3,8 +3,8 @@ import { Col, Container, Row } from "react-bootstrap";
 
 export const courses: FunctionComponent = () => (
   <Container>
+    <h2>Courses Offered:</h2>
     <Row>
-      <h2>Courses Offered:</h2>
       <ul>
         <li>
           Senior High School Strands
