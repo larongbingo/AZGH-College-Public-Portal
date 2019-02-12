@@ -23,6 +23,10 @@ export class PageNavbar extends Component {
                 <Nav.Link href="/courses">Courses</Nav.Link>
                 <Nav.Link href="/about">About Us</Nav.Link>
               </Nav>
+              <Nav>
+                <Nav.Link href="/login">Log In</Nav.Link>
+                <Nav.Link href="/register">Register</Nav.Link>
+              </Nav>
             </Navbar.Collapse>
           }
         </Container>
