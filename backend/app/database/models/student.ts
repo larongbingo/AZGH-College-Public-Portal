@@ -1,6 +1,7 @@
 import { compare, hash } from "bcrypt";
 // tslint:disable-next-line:no-implicit-dependencies
 import { generate } from "randomstring";
+import { Op } from "sequelize";
 import { BeforeCreate, BeforeUpdate, BelongsTo, Column, CreatedAt, DataType,
   ForeignKey, HasMany, HasOne, Model, PrimaryKey, Table } from "sequelize-typescript";
 
@@ -17,6 +18,14 @@ export class Student extends Model<Student> {
   @BeforeCreate
   private static generateID(instance: Student) {
     instance.id = `${new Date().getFullYear()}${generate({ charset: "numeric", length: 10 })}`;
+  }
+
+  @BeforeCreate
+  private static async uniqueUsername(instance: Student) {
+    let sameUsernameInstance = await this.findOne({where: {username: {[Op.eq]: instance.username}}});
+    if(sameUsernameInstance) {
+      throw new Error(`Provided username ${instance.username} is already taken`);
+    }
   }
 
   @BeforeUpdate
@@ -62,6 +71,8 @@ export class Student extends Model<Student> {
 
   @BelongsTo(() => Program)
   public enrolledProgram: Program;
+
+  // Instance Methods
 
   public async checkPassword(plainText: string): Promise<boolean> {
     return compare(plainText, this.password);
