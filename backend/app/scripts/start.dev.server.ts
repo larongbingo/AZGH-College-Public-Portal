@@ -1,3 +1,4 @@
+// tslint:disable-next-line:no-implicit-dependencies
 import debug from "debug";
 import { createServer } from "http";
 
