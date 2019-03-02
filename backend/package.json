@@ -10,6 +10,10 @@
   "keywords": [
     "webapp"
   ],
+  "repository": {
+    "url": "https://github.com/larongbingo/AZGH-College-Public-Portal.git",
+    "type": "github"
+  },
   "author": "Renz Pagulayan",
   "license": "AGPL-3.0",
   "dependencies": {
