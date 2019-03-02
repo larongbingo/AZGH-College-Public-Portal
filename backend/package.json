@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf ./build && tsc --pretty",
-    "sync-models": "node ./build/scripts/sync.models"
+    "sync-models": "node ./build/scripts/sync.models",
+    "sync-database": "node ./build/scripts/sync.database"
   },
   "keywords": [
     "webapp"
@@ -20,6 +21,7 @@
     "bcrypt": "^3.0.4",
     "cookie-parser": "^1.4.4",
     "express": "^4.16.4",
+    "http-errors": "^1.7.2",
     "morgan": "^1.9.1",
     "mysql2": "^1.6.5",
     "randomstring": "^1.1.5",
