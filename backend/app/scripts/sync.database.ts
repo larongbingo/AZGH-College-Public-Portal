@@ -1,10 +1,24 @@
+import { Sequelize } from "sequelize-typescript";
+
 import { DATABASE } from "../config";
-import { ORM } from "../database/orm";
 
 (async function() {
   try {
-    await ORM.query(`CREATE DATABASE IF NOT EXISTS ${DATABASE.database}`);
-    await ORM.query(`USE ${DATABASE.database}`);
+    // TODO: Find a way to connect to mysql server without specifying what database to use
+    console.log("Creating new Sequelize ORM instance");
+    let syncSeq = new Sequelize({
+      ...DATABASE,
+      database: "mysql",
+      dialect: "mysql"
+    });
+
+    console.log(`Creating database ${DATABASE.database}`);
+    await syncSeq.query(`CREATE DATABASE IF NOT EXISTS ${DATABASE.database}`);
+    
+    console.log(`Closing connection from Sequelize`);
+    await syncSeq.close();
+
+    console.log(`Successfully created database ${DATABASE.database}`);
     process.exit(0);
   }
   catch(err) {
