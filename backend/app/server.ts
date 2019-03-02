@@ -1,6 +1,5 @@
 import cookieParser from "cookie-parser";
 import Express, { NextFunction, Request, Response } from "express"; 
-// tslint:disable-next-line:no-implicit-dependencies
 import createError, { HttpError } from "http-errors";
 import logger from "morgan";
 
