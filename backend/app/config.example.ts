@@ -3,7 +3,7 @@
  */
 
 export const DATABASE = {
-  database: "The database where we will store the data",
-  username: "username of the mysql account",
-  password: "password of the mysql account"
+  database: null, // "The database where we will store the data",
+  username: null, // "username of the mysql account",
+  password: null, // "password of the mysql account"
 };
