@@ -44,9 +44,6 @@ export class Student extends Model<Student> {
   @Column(DataType.STRING)
   public password: string;
 
-  @Column(DataType.STRING)
-  public userStatus: string;
-
   @CreatedAt
   @Column(DataType.DATE)
   public dateRegistered: Date;
