@@ -1,0 +1,28 @@
+sudo: required
+
+language: node_js
+node_js: 
+  - "10.15.2"
+
+services:
+  - mysql
+
+addons: 
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+      - mysql-client
+
+# Environment Variables
+env:
+
+# Commands before installing dependencies
+before_install:
+
+script:
+  - npm run test
+
+after_success:
+  - npm run coverage
