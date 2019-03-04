@@ -72,7 +72,8 @@
       "coverage"
     ],
     "reporter": [
-      "html"
+      "html",
+      "json"
     ],
     "all": true
   }
