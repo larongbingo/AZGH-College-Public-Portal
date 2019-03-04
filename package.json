@@ -1,9 +1,9 @@
 {
   "scripts": {
     "install:backend": "cd backend & npm install",
-    "install": "npm run install:backend",
+    "install-deps": "npm run install:backend",
 
-    "pretest": "npm run install",
+    "pretest": "npm run install-deps",
     "test:backend": "cd backend & npm run test",
     "test": "cd backend & npm run test",
 
