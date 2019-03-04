@@ -26,8 +26,12 @@ function onError(err: any): void {
     "Pipe " + port : "Port " + port;
   switch(err.code) {
     case "EACCES":
+      console.error(`Requires privileged access at ${bind}`);
+      process.exit(1);
       break;
     case "EADDRINUSE":
+      console.error(`${bind} is already in use`);
+      process.exit(2);
       break;
     default:
       throw err;
