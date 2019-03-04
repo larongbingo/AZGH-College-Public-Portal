@@ -1,7 +1,15 @@
 {
   "scripts": {
+    "install:backend": "cd backend & npm install",
+    "install": "npm run install:backend",
+
+    "pretest": "npm run install",
     "test:backend": "cd backend & npm run test",
     "test": "cd backend & npm run test",
-    "start:dev:backend": "node ./backend/build/scripts/start.dev.server"
+
+    "start:dev:backend": "node ./backend/build/scripts/start.dev.server",
+
+    "build:backend": "cd backend & npm run build",
+    "build": "npm run build:backend"
   }
 }
