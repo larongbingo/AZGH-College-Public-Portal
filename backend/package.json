@@ -73,7 +73,8 @@
     ],
     "reporter": [
       "html",
-      "json"
+      "json",
+      "text"
     ],
     "all": true
   }
