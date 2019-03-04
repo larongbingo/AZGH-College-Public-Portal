@@ -4,7 +4,8 @@
   "description": "Backend of the student portal",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf ./build && tsc --pretty",
+    "build:dev": "rimraf ./build && tsc --pretty --sourceMap",
+    "build:prod": "rimraf ./build && tsc --pretty",
     "start:dev:windows": "set DEBUG=* & npm run start:dev",
     "start:dev:linux": "DEBUG=* npm run start:dev",
     "start:dev": "node ./build/scripts/start.dev.server",
