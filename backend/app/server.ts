@@ -1,6 +1,6 @@
 import cookieParser from "cookie-parser";
 import Express, { NextFunction, Request, Response } from "express"; 
-import helmet from "helmet";
+import helmet, { noCache } from "helmet";
 import createError, { HttpError } from "http-errors";
 import logger from "morgan";
 
@@ -9,6 +9,7 @@ import { addRoutes } from "./add.routes";
 export const EXPRESS = Express();
 
 EXPRESS.use(helmet());
+EXPRESS.use(noCache());
 EXPRESS.use(logger("dev"));
 EXPRESS.use(Express.json());
 EXPRESS.use(Express.urlencoded({ extended: false }));
