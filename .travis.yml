@@ -28,6 +28,7 @@ before_install:
 
 script:
   - npm install codecov -g
+  - cd backend
   - npm run build
   - npm run test
 
