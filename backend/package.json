@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf ./build && tsc --pretty",
-    "start:dev": "DEBUG=* node ./build/scripts/start.dev.server",
+    "start:dev:windows": "set DEBUG=* & npm run start:dev",
+    "start:dev:linux": "DEBUG=* npm run start:dev",
+    "start:dev": "node ./build/scripts/start.dev.server",
     "sync-models": "node ./build/scripts/sync.models",
     "sync-database": "node ./build/scripts/sync.database"
   },
