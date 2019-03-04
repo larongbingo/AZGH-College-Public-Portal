@@ -18,7 +18,8 @@ function getTokenIndex(token: string) {
  * @param userId The id of the user that requested to create a token
  * @returns The session token of the user
  */
-export function createSession(userId: string): string {
+export function createSession(userId: string): string | null {
+  if(!userId) { return null; }
   let token = "";
   do {
     token = generate({length: 11, charset: "alphanumeric"});

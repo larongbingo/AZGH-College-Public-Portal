@@ -1,6 +1,7 @@
 import debug from "debug";
 import { createServer } from "http";
 
+import "../database/orm"; // To run the addModels function
 import { EXPRESS as app } from "../server";
 
 let port = normalizePort(process.env.PORT || "3000");
@@ -25,8 +26,12 @@ function onError(err: any): void {
     "Pipe " + port : "Port " + port;
   switch(err.code) {
     case "EACCES":
+      console.error(`Requires privileged access at ${bind}`);
+      process.exit(1);
       break;
     case "EADDRINUSE":
+      console.error(`${bind} is already in use`);
+      process.exit(2);
       break;
     default:
       throw err;
@@ -39,4 +44,5 @@ function onListening(): void {
   let bind = typeof addr === "string" ?
     "pipe " + addr : "port " + addr!.port;
   serverDebugger("Listening on " + bind);
+  console.log(`Listening on ${bind}`);
 }
