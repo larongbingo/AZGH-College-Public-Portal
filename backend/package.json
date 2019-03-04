@@ -9,7 +9,8 @@
     "start:dev:linux": "DEBUG=* npm run start:dev",
     "start:dev": "node ./build/scripts/start.dev.server",
     "sync-models": "node ./build/scripts/sync.models",
-    "sync-database": "node ./build/scripts/sync.database"
+    "sync-database": "node ./build/scripts/sync.database",
+    "test": "nyc mocha ./tests/start.test.ts --opts ./tests/mocha.opts"
   },
   "keywords": [
     "webapp"
