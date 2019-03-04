@@ -24,6 +24,7 @@
   "license": "AGPL-3.0",
   "dependencies": {
     "bcrypt": "^3.0.4",
+    "commander": "^2.19.0",
     "cookie-parser": "^1.4.4",
     "debug": "^4.1.1",
     "express": "^4.16.4",
@@ -35,7 +36,8 @@
     "randomstring": "^1.1.5",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^4.42.0",
-    "sequelize-typescript": "^0.6.7"
+    "sequelize-typescript": "^0.6.7",
+    "write": "^1.0.3"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
@@ -46,6 +48,7 @@
     "@types/express-validator": "^3.0.0",
     "@types/helmet": "0.0.42",
     "@types/http-errors": "^1.6.1",
+    "@types/mkdirp": "^0.5.2",
     "@types/mocha": "^5.2.6",
     "@types/morgan": "^1.7.35",
     "@types/randomstring": "^1.1.6",
