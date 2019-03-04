@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf ./build && tsc --pretty",
+    "start:dev": "node ./build/scripts/start.dev.server",
     "sync-models": "node ./build/scripts/sync.models",
     "sync-database": "node ./build/scripts/sync.database"
   },
