@@ -11,7 +11,7 @@
     "start:dev": "node ./build/scripts/start.dev.server",
     "sync-models": "node ./build/scripts/sync.models",
     "sync-database": "node ./build/scripts/sync.database",
-    "test": "nyc mocha ./tests/start.test.ts --opts ./tests/mocha.opts",
+    "test": "nyc mocha ./tests/start.test.ts --opts ./tests/mocha.opts --exit",
     "init": "node ./build/scripts/init.config"
   },
   "keywords": [
