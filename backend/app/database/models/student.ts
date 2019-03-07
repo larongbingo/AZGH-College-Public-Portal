@@ -72,6 +72,7 @@ export class Student extends Model<Student> {
   // Instance Methods
 
   public async checkPassword(plainText: string): Promise<boolean> {
+    if(!plainText) { return false; }
     return compare(plainText, this.password);
   }
 }
