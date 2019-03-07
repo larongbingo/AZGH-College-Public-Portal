@@ -34,6 +34,7 @@ script:
   - npm install
   - ts-node ./app/scripts/init.config --testing_values #npm run init
   - npm run build:dev
+  - npm run sync-models
   - npm run test
 
 after_success:
