@@ -1,4 +1,3 @@
-import { throws, doesNotReject } from "assert";
 import { expect } from "chai";
 import "mocha";
 import { Op } from "sequelize";
