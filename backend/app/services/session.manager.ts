@@ -18,6 +18,7 @@ function getTokenIndex(token: string) {
  * @param userId The id of the user that requested to create a token
  * @returns The session token of the user
  */
+// TODO: Use JWT
 export function createSession(userId: string): string | null {
   if(!userId) { return null; }
   let token = "";
@@ -47,8 +48,7 @@ export function checkSessionValidity(token: string) {
 export function destroySession(token: string) {
   let index = getTokenIndex(token);
   if(index === -1) { return false; }
-
-  try { tokens = tokens.splice(getTokenIndex(token), 1); }
+  try { tokens.splice(getTokenIndex(token), 1); }
   catch(err) {
     console.error(err);
     throw err;

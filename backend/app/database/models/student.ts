@@ -17,7 +17,7 @@ import { StudentDetails } from "./student.details";
 export class Student extends Model<Student> {
   @BeforeCreate
   private static generateID(instance: Student) {
-    instance.id = `${new Date().getFullYear()}${generate({ charset: "numeric", length: 10 })}`;
+    instance.studentId = `${new Date().getFullYear()}${generate({ charset: "numeric", length: 10 })}`;
   }
 
   @BeforeCreate
@@ -72,6 +72,7 @@ export class Student extends Model<Student> {
   // Instance Methods
 
   public async checkPassword(plainText: string): Promise<boolean> {
+    if(!plainText) { return false; }
     return compare(plainText, this.password);
   }
 }

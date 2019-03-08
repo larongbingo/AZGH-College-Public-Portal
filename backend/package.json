@@ -11,7 +11,7 @@
     "start:dev": "node ./build/scripts/start.dev.server",
     "sync-models": "node ./build/scripts/sync.models",
     "sync-database": "node ./build/scripts/sync.database",
-    "test": "nyc mocha ./tests/start.test.ts --opts ./tests/mocha.opts",
+    "test": "nyc mocha ./tests/start.test.ts --opts ./tests/mocha.opts --exit",
     "init": "node ./build/scripts/init.config"
   },
   "keywords": [
@@ -46,7 +46,7 @@
     "@types/debug": "^4.1.1",
     "@types/express": "^4.16.1",
     "@types/express-validator": "^3.0.0",
-    "@types/helmet": "0.0.42",
+    "@types/helmet": "0.0.43",
     "@types/http-errors": "^1.6.1",
     "@types/mkdirp": "^0.5.2",
     "@types/mocha": "^5.2.6",
