@@ -70,7 +70,10 @@ USER_MANAGEMENT.post(
       return res.status(200).json(new APIResponse({newStudentId: student.studentId}));
     }
     catch(err) {
-      console.error(err);
+      if(err.message.match(/^Provided username/)) {
+        return res.status(422).json(new APIResponse({errors: [{msg: err.message}]}));
+      }
+
       return res.status(500).json(new APIResponse({errors: [createHttpErrors(500)]}));
     }
   }
