@@ -36,7 +36,7 @@
     "mysql2": "^1.6.5",
     "randomstring": "^1.1.5",
     "reflect-metadata": "^0.1.13",
-    "sequelize": "^4.42.0",
+    "sequelize": "^5.1.0",
     "sequelize-typescript": "^0.6.7"
   },
   "devDependencies": {
