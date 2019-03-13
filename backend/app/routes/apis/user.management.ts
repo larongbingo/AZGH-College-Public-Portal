@@ -2,6 +2,7 @@ import { Request, Response, Router } from "express";
 // tslint:disable-next-line: no-submodule-imports
 import { check, validationResult } from "express-validator/check";
 import createHttpErrors from "http-errors";
+import multer from "multer";
 
 import { Student } from "../../database/models/student";
 import { StudentContact } from "../../database/models/student.contact";
@@ -11,15 +12,19 @@ import { APIResponse } from "../../lib/APIResponse";
 
 export const USER_MANAGEMENT = Router();
 
+const upload = multer();
+
 USER_MANAGEMENT.post(
   "/apis/user/register",
   [
+    upload.none(),
+
     // User Credentials
-    check("username").isLength({min: 1}),
-    check("password").isLength({min: 1}),
+    check("username").isLength({min: 8}),
+    check("password").isLength({min: 8, max: 72}),
     
     // User Contact
-    check("phoneNumber").isLength({min: 1}),
+    check("phoneNumber").isLength({min: 1}).isString(),
     check("emailAddress").isEmail(),
 
     // Personal Details
@@ -36,30 +41,30 @@ USER_MANAGEMENT.post(
   async (req: Request, res: Response) => {
     const ERRORS = validationResult(req);
     if(!ERRORS.isEmpty()) { return res.status(422).json(new APIResponse({errors: ERRORS.array()})); }
-  
+
     try {
       let student = await Student.create({
-        username: req.params.username,
-        password: req.params.password
+        username: req.body.username,
+        password: req.body.password
       });
       
       await StudentContact.create({
-        emailAddress: req.params.emailAddress,
-        phoneNumber: req.params.phoneNumber,
-        telephoneNumber: req.params.telephoneNumber ? req.params.telephoneNumber : "NONE",
+        emailAddress: req.body.emailAddress,
+        phoneNumber: req.body.phoneNumber,
+        telephoneNumber: req.body.telephoneNumber ? req.body.telephoneNumber : "NONE",
         studentId: student.studentId,
       });
 
       await StudentDetails.create({
-        lrn: req.params.lrn,
-        firstName: req.params.firstName,
-        lastName: req.params.lastName,
-        middleName: req.params.middleName,
-        gender: req.params.gender,
-        status: req.params.status,
-        citizenship: req.params.citizenship,
-        birthPlace: req.params.birthPlace,
-        birthDate: req.params.birthDate,
+        lrn: req.body.lrn,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        middleName: req.body.middleName,
+        gender: req.body.gender,
+        status: req.body.status,
+        citizenship: req.body.citizenship,
+        birthPlace: req.body.birthPlace,
+        birthDate: req.body.birthDate,
       });
 
       return res.status(200).json(new APIResponse({newStudentId: student.studentId}));
