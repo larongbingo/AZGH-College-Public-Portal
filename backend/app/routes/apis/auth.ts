@@ -2,6 +2,7 @@ import { NextFunction, Request, Response, Router } from "express";
 // tslint:disable-next-line: no-submodule-imports
 import { check, validationResult } from "express-validator/check";
 import createHttpError from "http-errors";
+import multer from "multer";
 import { Op } from "sequelize";
 
 import { Student } from "../../database/models/student";
@@ -10,9 +11,12 @@ import { createSession, destroySession } from "../../services/session.manager";
 
 export const AUTH = Router();
 
+const upload = multer();
+
 AUTH.post(
   "/apis/login", 
   [
+    upload.none(),
     check("username").isLength({min: 1}),
     check("password").isLength({min: 1})
   ], 
@@ -21,9 +25,9 @@ AUTH.post(
       const ERRORS = validationResult(req);
       if(!ERRORS.isEmpty()) { return res.status(422).json(new APIResponse({errors: ERRORS.array()})); }
       
-      let student = await Student.findOne({where: {username: {[Op.eq]: req.params.username}}});
+      let student = await Student.findOne({where: {username: {[Op.eq]: req.body.username}}});
 
-      if(!student || await student.checkPassword(req.params.password)) {
+      if(!student || !await student.checkPassword(req.body.password)) {
         return res
           .status(422)
           .json(new APIResponse({errors: [{msg: "Invalid username or password"}]})); 
