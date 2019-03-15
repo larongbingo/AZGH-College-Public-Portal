@@ -2,6 +2,7 @@ import { Request, Response, Router } from "express";
 // tslint:disable-next-line: no-submodule-imports
 import { check, validationResult } from "express-validator/check";
 import createHttpError from "http-errors";
+import multer from "multer";
 import { Op } from "sequelize";
 
 import { Program } from "../../database/models/program";
@@ -9,6 +10,8 @@ import { Student } from "../../database/models/student";
 import { APIResponse } from "../../lib/APIResponse";
 
 export const SUBJECTS = Router();
+
+const upload = multer();
 
 SUBJECTS.get(
   "/apis/subjects",
@@ -66,6 +69,7 @@ SUBJECTS.get(
 SUBJECTS.post(
   "apis/subjects/enroll",
   [ 
+    upload.none(),
     check("userId").isLength({min: 1}),
     check("programId").isLength({min: 1})
   ],
@@ -75,8 +79,8 @@ SUBJECTS.post(
 
     try {
       let [program, student] = await Promise.all([
-        Program.findOne({where: {code: {[Op.eq]: req.params.programId}}}),
-        Student.findOne({where: {studentId: {[Op.eq]: req.params.userId}}})
+        Program.findOne({where: {code: {[Op.eq]: req.body.programId}}}),
+        Student.findOne({where: {studentId: {[Op.eq]: req.body.userId}}})
       ]);
 
       if(!program) {
