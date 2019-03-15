@@ -57,6 +57,16 @@ export function destroySession(token: string) {
 }
 
 /**
+ * Retrieves the associated student id with the given session token
+ * @param token The session token of the student
+ * @returns Returns an empty string if the given token is invalid, false otherwise
+ */
+export function getAssociatedStudentId(token: string) {
+  let i = getTokenIndex(token);
+  return i !== -1 ? tokens[i].userId : "";
+}
+
+/**
  * Holds the session token and its userID to indicate to whom it
  * belongs
  */

@@ -8,6 +8,7 @@ import { Op } from "sequelize";
 import { Program } from "../../database/models/program";
 import { Student } from "../../database/models/student";
 import { APIResponse } from "../../lib/APIResponse";
+import { getAssociatedStudentId } from "../../services/session.manager";
 
 export const SUBJECTS = Router();
 
@@ -76,11 +77,16 @@ SUBJECTS.post(
   async (req: Request, res: Response) => {
     const ERRORS = validationResult(req);
     if(!ERRORS.isEmpty()) { return res.status(422).json(new APIResponse({errors: ERRORS.array()})); }
+    
+    let userId = getAssociatedStudentId(req.body.studentId);
+    if(!userId) {
+      return res.status(422).json(new APIResponse({errors: [{msg: "Invalid Session Token"}]}));
+    }
 
     try {
       let [program, student] = await Promise.all([
         Program.findOne({where: {code: {[Op.eq]: req.body.programId}}}),
-        Student.findOne({where: {studentId: {[Op.eq]: req.body.userId}}})
+        Student.findOne({where: {studentId: {[Op.eq]: userId}}})
       ]);
 
       if(!program) {
