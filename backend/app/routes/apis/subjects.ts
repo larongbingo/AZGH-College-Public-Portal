@@ -99,6 +99,8 @@ SUBJECTS.post(
 
       student!.programEnrolled = program.code;
       await student!.save();
+
+      return res.status(200).json(new APIResponse({msg: "Successfully enrolled in the program"}));
     }
     catch(err) {
       console.log(err);
