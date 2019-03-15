@@ -71,7 +71,7 @@ SUBJECTS.post(
   "/apis/subjects/enroll",
   [ 
     upload.none(),
-    check("userId").isLength({min: 1}),
+    check("sessionToken").isLength({min: 1}),
     check("programId").isLength({min: 1})
   ],
   async (req: Request, res: Response) => {
