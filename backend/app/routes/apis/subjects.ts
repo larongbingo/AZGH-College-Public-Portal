@@ -78,7 +78,7 @@ SUBJECTS.post(
     const ERRORS = validationResult(req);
     if(!ERRORS.isEmpty()) { return res.status(422).json(new APIResponse({errors: ERRORS.array()})); }
     
-    let userId = getAssociatedStudentId(req.body.studentId);
+    let userId = getAssociatedStudentId(req.body.sessionToken);
     if(!userId) {
       return res.status(422).json(new APIResponse({errors: [{msg: "Invalid Session Token"}]}));
     }
