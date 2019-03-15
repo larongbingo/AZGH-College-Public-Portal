@@ -31,7 +31,11 @@ export class Student extends Model<Student> {
   @BeforeUpdate
   @BeforeCreate
   private static async hashPassword(instance: Student) {
-    instance.password = await hash(instance.password, 12);
+    // TODO: Find a more elegant solution
+    // @ts-ignore
+    if(instance.password !== instance._previousDataValues.password) {
+      instance.password = await hash(instance.password, 12);
+    }
   }
 
   @PrimaryKey
