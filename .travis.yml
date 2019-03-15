@@ -28,6 +28,7 @@ before_install:
   - sudo service mysql restart
 
 script:
+  - commitlint-travis
   - npm install codecov -g
   - npm install ts-node -g
   - cd backend
