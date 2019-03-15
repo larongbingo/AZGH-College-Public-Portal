@@ -68,7 +68,7 @@ SUBJECTS.get(
 );
 
 SUBJECTS.post(
-  "apis/subjects/enroll",
+  "/apis/subjects/enroll",
   [ 
     upload.none(),
     check("userId").isLength({min: 1}),
