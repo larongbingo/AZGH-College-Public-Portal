@@ -16,8 +16,8 @@ SUBJECTS.get(
     try {
       // TODO: Add filter by subjectCode/id
 
-      let searchParams = req.params.subjectTitle ? 
-      {where: {title: {[Op.like]: `%${req.params.subjectTitle}%`}}} : 
+      let searchParams = req.query.subjectTitle ? 
+      {where: {title: {[Op.like]: `%${req.query.subjectTitle}%`}}} : 
       undefined;
 
       let programs = await Program.findAll(searchParams);
