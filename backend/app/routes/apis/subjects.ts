@@ -106,7 +106,5 @@ SUBJECTS.post(
       console.log(err);
       return res.status(500).json(new APIResponse({errors: [createHttpError(500)]}));
     }
-
-    return res.send(200).json(new APIResponse({msg: "Successfully updated the student"}));
   }
 );
