@@ -94,7 +94,9 @@ SUBJECTS.post(
       }
 
       if(!student) {
-        return res.status(422).json(new APIResponse({errors: [{msg: "Student does not exist", param: "userId"}]}));
+        return res
+          .status(422)
+          .json(new APIResponse({errors: [{msg: "Student does not exist", param: "sessionToken"}]}));
       }
 
       student!.programEnrolled = program.code;
