@@ -4,6 +4,8 @@ import { createServer } from "http";
 import "../database/orm"; // To run the addModels function
 import { EXPRESS as app } from "../server";
 
+import "./cleanup";
+
 let port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
 
