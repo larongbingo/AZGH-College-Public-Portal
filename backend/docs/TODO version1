@@ -1,0 +1,7 @@
+Endpoints
+  [/] Login returns(string)
+  [/] Registration returns(boolean)
+  [X] Subjects params(subjectID, subjectName) returns(Object[])
+  [/] Subjects params(subjectName) returns(Object[])
+  [X] EnrolledStudents params(subjectID)
+  [/] EnrollSubject params(subjectID, sessionToken)
