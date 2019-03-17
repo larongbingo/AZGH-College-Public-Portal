@@ -35,38 +35,6 @@ SUBJECTS.get(
   }
 );
 
-SUBJECTS.get(
-  "/apis/subjects/enrolled",
-  [
-    check("programId").isLength({min: 1})
-  ],
-  async (req: Request, res: Response) => {
-    const ERRORS = validationResult(req);
-    if(!ERRORS.isEmpty()) { return res.status(422).json(new APIResponse({errors: ERRORS.array()})); }
-
-    try {
-      let enrolledStudents = await Student.findAll({where: {enrolledProgram: {[Op.eq]: req.params.programId}}});
-      let returnables: any[] = [];
-      
-      // To prevent private data to be leaked
-      enrolledStudents.forEach((student) => {
-        returnables.push({
-          firstName: student.details.firstName,
-          middleName: student.details.midddleName,
-          lastName: student.details.lastName,
-          id: student.studentId
-        });
-      });
-
-      return res.status(200).json(new APIResponse({studentsEnrolled: returnables}));
-    }
-    catch(err) {
-      console.log(err);
-      return res.status(500).json(new APIResponse({errors: [createHttpError(500)]}));
-    }
-  }
-);
-
 SUBJECTS.post(
   "/apis/subjects/enroll",
   [ 
