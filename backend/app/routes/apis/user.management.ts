@@ -65,6 +65,7 @@ USER_MANAGEMENT.post(
         citizenship: req.body.citizenship,
         birthPlace: req.body.birthPlace,
         birthDate: req.body.birthDate,
+        studentId: student.studentId
       });
 
       return res.status(200).json(new APIResponse({newStudentId: student.studentId}));
