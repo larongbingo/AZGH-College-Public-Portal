@@ -3,16 +3,52 @@ import { Request, Response, Router } from "express";
 import { check, validationResult } from "express-validator/check";
 import createHttpErrors from "http-errors";
 import multer from "multer";
+import { Op } from "sequelize";
 
 import { Student } from "../../database/models/student";
 import { StudentContact } from "../../database/models/student.contact";
 import { StudentDetails } from "../../database/models/student.details";
 import { StudentSchoolBackground } from "../../database/models/student.school.background";
 import { APIResponse } from "../../lib/APIResponse";
+import { getAssociatedStudentId } from "../../services/session.manager";
 
 export const USER_MANAGEMENT = Router();
 
 const upload = multer();
+
+USER_MANAGEMENT.get(
+  "/apis/user",
+  [
+    upload.none(),
+    check("sessionToken").isString().isLength({min: 1})
+  ],
+  async (req: Request, res: Response) => {
+    const ERRORS = validationResult(req);
+    if(!ERRORS.isEmpty()) { return res.status(422).json(new APIResponse({errors: ERRORS.array()})); }
+
+    let studentId = getAssociatedStudentId(req.body.sessionToken);
+    if(!studentId) {
+      return res.status(422).json(new APIResponse({errors: [{msg: "Invalid sessionToken"}]}));
+    }
+
+    try {
+      let student = await Student.findOne({where: {studentId: {[Op.eq]: studentId}}});
+      
+      if(!student) {
+        return res.status(422).json(new APIResponse({errors: [{msg: "User does not exist, please login again"}]}));
+      }
+
+      return res.status(200).json(new APIResponse({details: {
+        personal: await student.$get<StudentDetails>("details"),
+        contact: await student.$get<StudentContact>("contact")
+      }}));
+    }
+    catch(err) {
+      console.error(err);
+      return res.status(500).json(new APIResponse({errors: [{msg: "Internal Server Error"}]}));
+    }
+  }
+);
 
 USER_MANAGEMENT.post(
   "/apis/user/register",
