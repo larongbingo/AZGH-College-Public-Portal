@@ -7,3 +7,6 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/larongbingo/AZGH-College-Public-Portal/badge.svg?targetFile=frontend%2Fpackage.json)](https://snyk.io/test/github/larongbingo/AZGH-College-Public-Portal?targetFile=frontend%2Fpackage.json)
 
 ### Under the order of Angelito Borinaga
+
+## Note
+git pull origin master and git rebase master
