@@ -7,6 +7,7 @@ import { Student } from "./student";
   paranoid: true
 })
 export class StudentDetails extends Model<StudentDetails> {
+  @Column(DataType.STRING)
   @ForeignKey(() => Student)
   public studentId: string;
 
