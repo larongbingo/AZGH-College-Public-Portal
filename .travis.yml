@@ -31,7 +31,7 @@ script:
   - commitlint-travis
   - npm install codecov -g
   - npm install ts-node -g
-  - cd backend
+  - cd ./student/backend
   - npm install
   - ts-node ./app/scripts/init.config --testing_values #npm run init
   - npm run build:dev
