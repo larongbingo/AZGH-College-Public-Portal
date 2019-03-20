@@ -39,6 +39,7 @@ export class LogIn extends Component<{}, ILogInStates> {
               placeholder="Username"
               value={this.state.username}
               onChange={this._usernameKeyPressHandler}
+              onKeyPress={this._onEnterKeyPress}
             />
           </Form.Group>
     
@@ -50,6 +51,7 @@ export class LogIn extends Component<{}, ILogInStates> {
               placeholder="Password"
               value={this.state.password} 
               onChange={this._passwordKeyPressHandler}
+              onKeyPress={this._onEnterKeyPress}
             />
           </FormGroup>
     
@@ -70,7 +72,6 @@ export class LogIn extends Component<{}, ILogInStates> {
   }
 
   private _onEnterKeyPress(e: any) {
-    e.preventDefault();
     if(e.key === "Enter") {
       this._logInRequest();
     }
