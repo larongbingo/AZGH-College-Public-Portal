@@ -9,7 +9,7 @@ export class LogIn extends Component<{}, ILogInStates> {
     this.state = {
       username: "",
       password: "",
-      isLogInFailed: false
+      showLogInFailed: false
     };
 
     this._usernameKeyPressHandler = this._usernameKeyPressHandler.bind(this);
@@ -23,8 +23,8 @@ export class LogIn extends Component<{}, ILogInStates> {
       <Container>
         {
           // @ts-ignore
-          this.state.isLogInFailed ?
-          <Alert dismissible variant="danger">
+          this.state.showLogInFailed ?
+          <Alert dismissible variant="danger" onClose={() => this.setState({showLogInFailed: false})}>
             <Alert.Heading>Invalid Credentials</Alert.Heading>
           </Alert> : 
           null
@@ -89,14 +89,12 @@ export class LogIn extends Component<{}, ILogInStates> {
       // Check if the session token is stored
       if(!data.payload.token) {
         // Alert user that the login failed, probably of incorrect credentials
-        this.setState({ isLogInFailed: true });
+        this.setState({ showLogInFailed: true });
         return;
       }
       
       // Store session token
       sessionStorage.setItem(SESSION_KEY, data.payload.token);
-
-      this.setState({ isLogInFailed: false });
 
       // Redirect to app
       // @ts-ignore
@@ -109,7 +107,7 @@ export class LogIn extends Component<{}, ILogInStates> {
 interface ILogInStates {
   username: string;
   password: string;
-  isLogInFailed: boolean;
+  showLogInFailed: boolean;
 }
 
 export default LogIn;
