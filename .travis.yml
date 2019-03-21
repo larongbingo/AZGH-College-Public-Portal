@@ -40,6 +40,7 @@ script:
   - npm run sync-models
   - npm run test -- --coverage
   - ls
+  - ls ./coverage
   - mv ./coverage/coverage-final.json ../../coverage/student.backend.coverage.json
 
   # Student - frontend
@@ -47,6 +48,7 @@ script:
   - cd frontend
   - npm install
   - npm run test -- --coverage
+  - ls ./coverage
   - mv ./coverage/coverage-final.json ../../coverage/student.frontend.coverage.json
 
 after_success:
