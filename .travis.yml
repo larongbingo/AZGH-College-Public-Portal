@@ -47,5 +47,5 @@ script:
   - npm run test -- --coverage
 
 after_success:
-  - cd ~
+  - cd ../../
   - codecov -f **/coverage/*.json
