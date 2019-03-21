@@ -55,5 +55,5 @@ script:
 after_success:
   - cd ../../
   - ls
-  - bash <(curl -s https://codecov.io/bash) -cF ./coverage
+  - bash <(curl -s https://codecov.io/bash) -cF coverage
   - #codecov -f coverage/*.json
