@@ -41,8 +41,7 @@ script:
   - npm run test -- --coverage
 
   # Student - frontend
-  - cd ~
-  - cd ./student/frontend
+  - cd ../student/frontend
   - npm install
   - npm run test -- --coverage
 
