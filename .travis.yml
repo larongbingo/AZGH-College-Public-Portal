@@ -42,8 +42,7 @@ script:
 
   # Student - frontend
   - cd ../
-  - ls
-
+  - cd frontend
   - npm install
   - npm run test -- --coverage
 
