@@ -39,6 +39,7 @@ script:
   - npm run build:dev
   - npm run sync-models
   - npm run test -- --coverage
+  - ls
   - mv coverage/coverage-final.json ../../coverage/student.backend.coverage.json
 
   # Student - frontend
