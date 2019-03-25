@@ -14,18 +14,18 @@ export class StudentSchoolBackground extends Model<StudentSchoolBackground> {
   @Column(DataType.STRING)
   public elementarySchool: string;
 
-  @Column(DataType.DATE)
-  public elementaryGrad: Date;
+  @Column(DataType.STRING)
+  public elementaryGrad: string;
 
   @Column(DataType.STRING)
   public juniorHighSchool: string;
 
-  @Column(DataType.DATE)
-  public juniorHighGrad: Date;
+  @Column(DataType.STRING)
+  public juniorHighGrad: string;
 
   @Column(DataType.STRING)
   public seniorHighSchool?: string;
 
-  @Column(DataType.DATE)
-  public seniorHighGrad?: Date;
+  @Column(DataType.STRING)
+  public seniorHighGrad?: string;
 }
