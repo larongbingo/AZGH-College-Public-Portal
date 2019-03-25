@@ -9,6 +9,7 @@ import { Guardian } from "./guardian";
 import { Program } from "./program";
 import { StudentContact } from "./student.contact";
 import { StudentDetails } from "./student.details";
+import { StudentSchoolBackground } from "./student.school.background";
 
 @Table({
   tableName: "students",
@@ -69,6 +70,9 @@ export class Student extends Model<Student> {
 
   @HasOne(() => StudentContact)
   public contact: StudentContact;
+
+  @HasOne(() => StudentSchoolBackground)
+  public schoolBackground: StudentSchoolBackground;
 
   @BelongsTo(() => Program)
   public enrolledProgram: Program;
