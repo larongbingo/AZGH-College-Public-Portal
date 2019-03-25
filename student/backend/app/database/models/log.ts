@@ -1,4 +1,4 @@
-import { Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { Column, DataType, Default, ForeignKey, Model, Table } from "sequelize-typescript";
 
 import { Student } from "./student";
 
@@ -7,6 +7,10 @@ import { Student } from "./student";
   paranoid: true
 })
 export class Log extends Model<Log> {
+  @Default(DataType.UUID)
+  @Column(DataType.UUIDV4)
+  public id: string;
+
   @Column(DataType.STRING)
   public event: string;
 
