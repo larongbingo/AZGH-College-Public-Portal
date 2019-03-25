@@ -7,9 +7,11 @@ import { index } from "./pages/index";
 import login from "./pages/login";
 import page404 from "./pages/page404";
 import profile from "./pages/profile";
+import register from "./pages/register";
 
 export const routes: FunctionComponent = () => (
   <Switch>
+    <Route exact path="/register" component={register} />
     <Route exact path="/profile" component={profile} />
     <Route exact path="/login" component={login} />
     <Route exact path="/courses" component={courses} />
