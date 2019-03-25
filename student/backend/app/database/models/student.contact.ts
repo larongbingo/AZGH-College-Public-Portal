@@ -9,9 +9,6 @@ import { Student } from "./student";
 export class StudentContact extends Model<StudentContact> {
 
   @Column(DataType.STRING)
-  public telephoneNumber?: string;
-
-  @Column(DataType.STRING)
   public phoneNumber?: string;
 
   @Column(DataType.STRING)
