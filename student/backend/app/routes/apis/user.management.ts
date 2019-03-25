@@ -5,6 +5,8 @@ import createHttpErrors from "http-errors";
 import multer from "multer";
 import { Op } from "sequelize";
 
+import { Guardian } from "../../database/models/guardian";
+import { Program } from "../../database/models/program";
 import { Student } from "../../database/models/student";
 import { StudentContact } from "../../database/models/student.contact";
 import { StudentDetails } from "../../database/models/student.details";
@@ -40,7 +42,10 @@ USER_MANAGEMENT.get(
 
       return res.status(200).json(new APIResponse({details: {
         personal: await student.$get<StudentDetails>("details"),
-        contact: await student.$get<StudentContact>("contact")
+        contact: await student.$get<StudentContact>("contact"),
+        program: await student.$get<Program>("enrolledProgram"),
+        guardian: await student.$get<Guardian>("guardian"),
+        schoolBackground: await student.$get<StudentSchoolBackground>("schoolBackground")
       }}));
     }
     catch(err) {
