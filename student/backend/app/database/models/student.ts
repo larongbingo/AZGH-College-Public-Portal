@@ -61,7 +61,7 @@ export class Student extends Model<Student> {
 
   // Model Relationships
 
-  @HasMany(() => Guardian)
+  @HasOne(() => Guardian)
   public guardians: Guardian[];
 
   @HasOne(() => StudentDetails)
