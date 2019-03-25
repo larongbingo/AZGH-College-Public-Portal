@@ -1,4 +1,4 @@
-import { Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { AllowNull, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
 
 import { Student } from "./student";
 
@@ -24,8 +24,12 @@ export class Guardian extends Model<Guardian> {
   public middleName: string;
 
   @Column(DataType.STRING)
+  public suffix: string;
+
+  @Column(DataType.STRING)
   public phoneNumber: string;
 
+  @AllowNull(true)
   @Column(DataType.STRING)
   public emailAddress: string;
 
