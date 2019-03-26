@@ -8,8 +8,8 @@ import { Student } from "./student";
 })
 export class Log extends Model<Log> {
   @PrimaryKey
-  @Default(DataType.UUID)
-  @Column(DataType.UUIDV4)
+  @Default(DataType.UUIDV4)
+  @Column(DataType.UUID)
   public id: string;
 
   @Column(DataType.STRING)
