@@ -13,6 +13,7 @@
     "sync-database": "node ./build/scripts/sync.database",
     "test": "nyc mocha ./tests/start.test.ts --opts ./tests/mocha.opts --exit",
     "test:data": "node ./build/scripts/create.test.data",
+    "azgh:subjects": "node ./build/scripts/insert.azgh.subjects",
     "init": "node ./build/scripts/init.config"
   },
   "keywords": [
