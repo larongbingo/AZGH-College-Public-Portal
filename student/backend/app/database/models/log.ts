@@ -1,12 +1,14 @@
 import { Column, DataType, Default, ForeignKey, Model, PrimaryKey, Table } from "sequelize-typescript";
 
+import { ILog } from "../../interfaces/models/ILog";
+
 import { Student } from "./student";
 
 @Table({
   tableName: "logs",
   paranoid: true
 })
-export class Log extends Model<Log> {
+export class Log extends Model<Log> implements ILog {
   @PrimaryKey
   @Default(DataType.UUIDV4)
   @Column(DataType.UUID)
