@@ -28,4 +28,7 @@ export class StudentSchoolBackground extends Model<StudentSchoolBackground> {
 
   @Column(DataType.STRING)
   public seniorHighGrad?: string;
+
+  @Column(DataType.STRING)
+  public seniorHighTrack: string;
 }
