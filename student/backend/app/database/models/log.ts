@@ -1,4 +1,4 @@
-import { Column, DataType, Default, ForeignKey, Model, PrimaryKey, Table } from "sequelize-typescript";
+import { AllowNull, Column, DataType, Default, ForeignKey, Model, PrimaryKey, Table } from "sequelize-typescript";
 
 import { ILog } from "../../interfaces/models/ILog";
 
@@ -20,10 +20,12 @@ export class Log extends Model<Log> implements ILog {
   @Column(DataType.STRING)
   public description: string;
 
+  @AllowNull(true)
   @ForeignKey(() => Student)
   @Column(DataType.STRING)
   public studentId?: string;
 
+  @AllowNull(true)
   @Column(DataType.STRING)
   public params?: string;
 }
