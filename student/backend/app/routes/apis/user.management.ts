@@ -12,6 +12,7 @@ import { StudentContact } from "../../database/models/student.contact";
 import { StudentDetails } from "../../database/models/student.details";
 import { StudentSchoolBackground } from "../../database/models/student.school.background";
 import { APIResponse } from "../../lib/APIResponse";
+import { logEvent } from "../../services/logging";
 import { getAssociatedStudentId } from "../../services/session.manager";
 
 export const USER_MANAGEMENT = Router();
@@ -109,12 +110,24 @@ USER_MANAGEMENT.post(
         studentId: student.studentId
       });
 
+      logEvent({
+        event: "Student Registration",
+        description: `New student register nicknamed ${student.username}`,
+        studentId: student.studentId
+      });
+
       return res.status(200).json(new APIResponse({newStudentId: student.studentId}));
     }
     catch(err) {
       if(err.message.match(/^Provided username/)) {
         return res.status(422).json(new APIResponse({errors: [{msg: err.message}]}));
       }
+
+      logEvent({
+        event: "Student Registration",
+        description: `Error occurred: ${JSON.stringify(err)}`,
+        params: JSON.stringify(req.body)
+      });
 
       return res.status(500).json(new APIResponse({errors: [createHttpErrors(500)]}));
     }

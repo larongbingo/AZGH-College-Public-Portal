@@ -8,6 +8,7 @@ import { Op } from "sequelize";
 import { Program } from "../../database/models/program";
 import { Student } from "../../database/models/student";
 import { APIResponse } from "../../lib/APIResponse";
+import { logEvent } from "../../services/logging";
 import { getAssociatedStudentId } from "../../services/session.manager";
 
 export const SUBJECTS = Router();
@@ -70,10 +71,23 @@ SUBJECTS.post(
       student!.programEnrolled = program.code;
       await student!.save();
 
+      logEvent({
+        event: "Enrollment",
+        description: `Student ${student.username} enrolled to ${program.title}`,
+        studentId: student.studentId
+      });
+
       return res.status(200).json(new APIResponse({msg: "Successfully enrolled in the program"}));
     }
     catch(err) {
       console.log(err);
+      
+      logEvent({
+        event: "Enrollment",
+        description: `Error occurred: ${JSON.stringify(err)}`,
+        params: JSON.stringify(req.body)
+      });
+      
       return res.status(500).json(new APIResponse({errors: [createHttpError(500)]}));
     }
   }
