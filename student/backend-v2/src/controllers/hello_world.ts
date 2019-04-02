@@ -1,4 +1,5 @@
-'use strict';
+import { Request, Response } from "express";
+
 /*
  'use strict' is not required but helpful for turning syntactical errors into true errors in the program flow
  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
@@ -30,11 +31,11 @@
   Param 1: a handle to the request object
   Param 2: a handle to the response object
  */
-export function hello(req, res) {
+export function hello(req: Request, res: Response) {
   // variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
-  var name = req.swagger.params.name.value || 'stranger';
-  var hello = `Hello, ${name}`;
+  // @ts-ignore
+  let name = req.swagger.params.name.value || "stranger";
 
   // this sends back a JSON response which is a single string
-  res.json(hello);
+  res.json(`Hello, ${name}`);
 }
