@@ -42,6 +42,35 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  /login:
+    x-swagger-router-controller: authentication_controller
+    post:
+      description: If the given credentials is valid, returns a session string
+      operationId: login
+      parameters:
+        - name: username
+          in: query
+          description: The username of the account
+          required: true
+          type: string
+        - name: password
+          in: query
+          description: The password of the account
+          required: true
+          type: string
+      responses:
+        "200": 
+          description: Success
+          schema:
+            # TODO: Create a schema for all responses
+        "422":
+          description: Failed due to incorrect username or password
+          schema: 
+            # TODO: Create a schema for all responses
+        "500":
+          description: Internal Error
+          schema: 
+            # TODO: Create a schema for all responses
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
