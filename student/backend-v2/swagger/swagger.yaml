@@ -71,10 +71,90 @@ paths:
           description: Internal Error
           schema: 
             # TODO: Create a schema for all responses
+  /register:
+    x-swagger-router-controller: user_controller
+    post:
+      description: Creates a new User object based on the details given
+      operationId: create_user
+      parameters:
+        # Account Credentials
+        - name: username
+          in: query
+          description: The username the user wants to access the web account
+          type: string
+          required: true
+        - name: password
+          in: query
+          description: The password the user wants to access the web account
+          type: string
+          required: true
+        
+        # Personal Details
+        - name: firstName
+          in: query
+          description: The firstname of the user
+          type: string
+          required: true
+        - name: lastName
+          in: query
+          description: The lastname of the user
+          type: string
+          required: true
+        - name: middleName
+          in: query
+          description: The middle of the user
+          type: string
+          required: true
+        - name: suffix
+          in: query
+          description: The suffix of the user, if any
+          type: string
+          required: false
+        - name: religion
+          in: query
+          description: The religion of the user
+          type: string
+          required: true
+        - name: citizenship
+          in: query
+          description: The citizenship of the user
+          type: string
+          required: true
+        - name: dateOfBirth
+          in: query
+          description: The Date of Birth of the user
+          type: string
+          required: true
+        - name: birthPlace
+          in: query
+          description: The Birth Place of the user
+          type: string
+          required: true
+
+        # Address
+      responses:
+        "200": 
+          description: Success
+          schema:
+            $ref: "#/definitions/Response"
+        "422":
+          description: Failed due to incorrect username or password
+          schema: 
+            $ref: "#/definitions/ErrorResponse"
+        "500":
+          description: Internal Error
+          schema: 
+            $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
+  Response:
+    properties:
+      iat:
+        type: number
+      payload:
+        type: Object
   HelloWorldResponse:
     required:
       - message
@@ -83,7 +163,9 @@ definitions:
         type: string
   ErrorResponse:
     required:
-      - message
+      - errors
     properties:
-      message:
-        type: string
+      iat: 
+        type: number
+      errors:
+        type: array
