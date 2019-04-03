@@ -5,7 +5,7 @@ info:
 # during dev, should point to your local machine
 host: localhost:3000
 # basePath prefixes all resource paths 
-basePath: /
+basePath: /apis/v1
 # 
 schemes:
   # tip: remove http to make production-grade
