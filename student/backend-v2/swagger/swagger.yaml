@@ -62,15 +62,15 @@ paths:
         "200": 
           description: Success
           schema:
-            # TODO: Create a schema for all responses
+            $ref: "#/definitions/Response"
         "422":
           description: Failed due to incorrect username or password
           schema: 
-            # TODO: Create a schema for all responses
+            $ref: "#/definitions/ErrorResponse"
         "500":
           description: Internal Error
           schema: 
-            # TODO: Create a schema for all responses
+            $ref: "#/definitions/ErrorResponse"
   /register:
     x-swagger-router-controller: user_controller
     post:
@@ -154,7 +154,7 @@ definitions:
       iat:
         type: number
       payload:
-        type: Object
+        type: object
   HelloWorldResponse:
     required:
       - message
