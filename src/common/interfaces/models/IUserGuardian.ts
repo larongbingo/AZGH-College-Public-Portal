@@ -6,9 +6,9 @@ export interface IUserGuardian {
    */
   userId: string;
   
-  firstName?: string;
-  middleName: string;
-  lastName?: string;
+  firstName: string;
+  middleName?: string;
+  lastName: string;
   mobileNumber: string;
   emailAddress: string;
   occupation: string;
