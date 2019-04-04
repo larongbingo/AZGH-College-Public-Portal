@@ -1,5 +1,5 @@
 
 export interface IRoom {
   roomCode: string;
-  description: string;
+  description?: string;
 }
