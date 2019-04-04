@@ -2,6 +2,12 @@
 export interface IUser {
 
   /**
+   * A Foreign Key from Program
+   * @see {@link IProgram.ts}
+   */
+  enrolledProgram?: string;
+
+  /**
    * Identifier of the account when logging in
    * This is unique to each account
    */
