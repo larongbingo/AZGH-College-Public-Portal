@@ -5,7 +5,6 @@ export interface IUserAddress {
    * @see {@link ./IUser.ts}
    */
   userId: string;
-  type: "current" | "permanent";
   streetNumber: string;
   streetName: string;
   subdivision: string;
