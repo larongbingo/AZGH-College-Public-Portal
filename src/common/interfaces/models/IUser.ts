@@ -26,5 +26,11 @@ export interface IUser {
   /**
    * Refers to the level of access
    */
-  type: "Student" | "Professor" | "Admin";
+  type: UserType;
+}
+
+export enum UserType {
+  Student = "Student",
+  Professor = "Professor",
+  Admin = "Admin"
 }
