@@ -16,8 +16,8 @@ addons:
       - mysql-client
 
 # Environment Variables
-env:
-  - MYSQL_DATABASE_NAME=student_portal MYSQL_USERNAME=root MYSQL_PASSWORD=root
+#env:
+#  - MYSQL_DATABASE_NAME=student_portal MYSQL_USERNAME=root MYSQL_PASSWORD=root
 
 # Commands before installing dependencies
 before_install:
