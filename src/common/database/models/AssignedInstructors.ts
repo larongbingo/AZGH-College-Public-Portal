@@ -1,5 +1,5 @@
 import { Op } from "sequelize";
-import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model } from "sequelize-typescript";
+import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
 
 import { IAssignedInstructors } from "../../interfaces/models/IAssignedInstructors";
 import { UserType } from "../../interfaces/models/IUser";
@@ -7,6 +7,10 @@ import { UserType } from "../../interfaces/models/IUser";
 import { Schedule } from "./Schedule";
 import { User } from "./User";
 
+@Table({
+  tableName: "assignedInstructors",
+  paranoid: true
+})
 export class AssignedInstructors extends Model<AssignedInstructors> implements IAssignedInstructors {
   // Class Methods
 

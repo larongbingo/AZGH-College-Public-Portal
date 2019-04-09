@@ -4,6 +4,10 @@ import { IUserPreviousSchool } from "../..//interfaces/models/IUserPreviousSchoo
 
 import { User } from "./User";
 
+@Table({
+  tableName: "userPreviousSchool",
+  paranoid: true
+})
 export class UserPreviousSchool extends Model<UserPreviousSchool> implements IUserPreviousSchool {
 
   // Table Columns

@@ -1,10 +1,14 @@
-import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model } from "sequelize-typescript";
+import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
 
 import { ICurriculum } from "../../interfaces/models/ICurriculum";
 
 import { Program } from "./Program";
 import { Subject } from "./Subject";
 
+@Table({
+  tableName: "curriculum",
+  paranoid: true
+})
 export class Curriculum extends Model<Curriculum> implements ICurriculum {
   // Model Columns
 

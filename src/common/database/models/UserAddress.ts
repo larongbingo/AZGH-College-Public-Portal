@@ -4,6 +4,10 @@ import { IUserAddress } from "../../interfaces/models/IUserAddress";
 
 import { User } from "./User";
 
+@Table({
+  tableName: "userAddresses",
+  paranoid: true
+})
 export class UserAddress extends Model<UserAddress> implements IUserAddress {
   // Table Columns
 

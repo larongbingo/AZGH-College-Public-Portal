@@ -1,10 +1,14 @@
-import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, PrimaryKey } from "sequelize-typescript";
+import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, PrimaryKey, Table } from "sequelize-typescript";
 
 import { ISchedule } from "../../interfaces/models/ISchedule";
 
 import { Subject } from "./Subject";
 import { User } from "./User";
 
+@Table({
+  tableName: "schedules",
+  paranoid: true
+})
 export class Schedule extends Model<Schedule> implements ISchedule {
   // Model Columns
 
