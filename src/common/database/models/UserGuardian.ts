@@ -1,4 +1,4 @@
-import { AllowNull, Column, DataType, ForeignKey, HasOne, Model, Table } from "sequelize-typescript";
+import { AllowNull, BelongsTo, Column, DataType, ForeignKey, HasOne, Model, Table } from "sequelize-typescript";
 
 import { IUserGuardian } from "../../interfaces/models/IUserGuardian";
 
@@ -44,7 +44,7 @@ export class UserGuardian extends Model<UserGuardian> implements IUserGuardian {
 
   // Model Relationships
 
-  @HasOne(() => User)
+  @BelongsTo(() => User)
   public user: User;
 
   // End Model Relationships
