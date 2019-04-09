@@ -2,7 +2,9 @@
   "name": "azgh-college-public-portal",
   "version": "0.0.1",
   "description": "A webapp for azgh students ",
-  "scripts": {},
+  "scripts": {
+    "build:dev": "tsc --pretty --sourceMap"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/larongbingo/AZGH-College-Public-Portal.git"
