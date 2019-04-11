@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "A webapp for azgh students ",
   "scripts": {
-    "build:dev": "tsc --pretty --sourceMap"
+    "build:dev": "tsc --pretty --sourceMap",
+    "sync:models": "node ./build/scripts/sync.models"
   },
   "repository": {
     "type": "git",
