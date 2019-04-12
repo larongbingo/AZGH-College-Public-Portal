@@ -22,7 +22,7 @@ export class AssignedInstructors extends Model<AssignedInstructors> implements I
     }
 
     if(user.type !== UserType.Admin) {
-      throw new Error(`User ${instance.userId} does not exist`);
+      throw new Error(`User ${instance.userId} does not have proper permissions`);
     }
   }
 
