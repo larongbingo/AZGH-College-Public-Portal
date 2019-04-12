@@ -13,6 +13,7 @@ import { UserContacts } from "./UserContacts";
 import { UserDetails } from "./UserDetails";
 import { UserGuardian } from "./UserGuardian";
 import { UserPreviousSchool } from "./UserPreviousSchool";
+import { UserPreviousWork } from "./UserPreviousWork";
 
 @Table({
   tableName: "users",
@@ -101,6 +102,9 @@ export class User extends Model<User> implements IUser {
 
   @BelongsTo(() => Program)
   public program: Program;
+
+  @HasOne(() => UserPreviousWork)
+  public previousWork: UserPreviousWork;
 
   // End Model Relationships
 
