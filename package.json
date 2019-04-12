@@ -25,6 +25,7 @@
     "@commitlint/travis-cli": "^7.5.2",
     "@types/bcrypt": "^3.0.0",
     "@types/express": "^4.16.1",
+    "@types/express-graphql": "^0.6.2",
     "@types/jsonwebtoken": "^8.3.2",
     "@types/lokijs": "^1.5.2",
     "@types/randomstring": "^1.1.6",
