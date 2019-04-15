@@ -1,12 +1,23 @@
-import { Sequelize } from "sequelize-typescript";
+import { ISequelizeConfig, Sequelize } from "sequelize-typescript";
+
+import { development, production, test } from "../config";
 
 import { addModels } from "./add.models";
 
+let config;
+
+if(process.env.NODE_ENV === "production") {
+  config = production;
+}
+else if(process.env.NODE_ENV === "development") {
+  config = development;
+}
+else {
+  config = test;
+}
+
 export const SEQUELIZE = new Sequelize({
-  database: "azgh",
-  username: process.env.MYSQL_USERNAME || "root",
-  password: process.env.MYSQL_PASSWORD || "root",
-  dialect: "mysql"
+  ...config as ISequelizeConfig
 });
 
 addModels(SEQUELIZE);
