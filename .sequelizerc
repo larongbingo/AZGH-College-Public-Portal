@@ -6,7 +6,7 @@ const path = require("path");
 
 module.exports = {
   "config":          path.resolve("src", "common", "config.ts"),
-  "migrations-path": path.resolve("src", "common", "database", "migrations"),
-  "models-path":     path.resolve("src", "common", "database", "models"),
-  "seeders-path":    path.resolve("src", "common", "database", "seeders"),
+  "migrations-path": path.resolve("build", "common", "database", "migrations"),
+  "models-path":     path.resolve("build", "common", "database", "models"),
+  "seeders-path":    path.resolve("build", "common", "database", "seeders"),
 };
