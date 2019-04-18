@@ -8,7 +8,7 @@ import { User } from "./User";
 
 @Table({
   tableName: "programs",
-  paranoid: true
+  paranoid: true,
 })
 export class Program extends Model<Program> implements IProgram {
 
@@ -16,11 +16,11 @@ export class Program extends Model<Program> implements IProgram {
 
   @PrimaryKey
   @AllowNull(false)
-  @Column(DataType.STRING) 
-  public programCode: string;  
-  
+  @Column(DataType.STRING)
+  public programCode: string;
+
   @AllowNull(false)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public description: string;
 
   // End Model Columns

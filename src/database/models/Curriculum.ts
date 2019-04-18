@@ -7,7 +7,7 @@ import { Subject } from "./Subject";
 
 @Table({
   tableName: "curriculum",
-  paranoid: true
+  paranoid: true,
 })
 export class Curriculum extends Model<Curriculum> implements ICurriculum {
   // Model Columns
@@ -16,7 +16,7 @@ export class Curriculum extends Model<Curriculum> implements ICurriculum {
   @AllowNull(false)
   @Column(DataType.STRING)
   public programCode: string;
-  
+
   @ForeignKey(() => Subject)
   @AllowNull(false)
   @Column(DataType.STRING)

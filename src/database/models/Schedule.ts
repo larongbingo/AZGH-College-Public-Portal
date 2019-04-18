@@ -7,25 +7,25 @@ import { User } from "./User";
 
 @Table({
   tableName: "schedules",
-  paranoid: true
+  paranoid: true,
 })
 export class Schedule extends Model<Schedule> implements ISchedule {
   // Model Columns
 
   @PrimaryKey
   @AllowNull(false)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public scheduleCode: string;
-  
+
   @ForeignKey(() => Subject)
   @AllowNull(false)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public subjectCode: string;
 
   // End Model Columns
 
   // Model Relationships
-  
+
   @BelongsTo(() => Subject)
   public subject: Subject;
 

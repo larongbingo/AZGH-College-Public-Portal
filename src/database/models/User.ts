@@ -1,7 +1,7 @@
 import { compare, hash } from "bcrypt";
 import { generate } from "randomstring";
 import { Op } from "sequelize";
-import { AllowNull, BeforeCreate, BeforeUpdate, BelongsTo, 
+import { AllowNull, BeforeCreate, BeforeUpdate, BelongsTo,
   Column, DataType, ForeignKey, HasMany, HasOne, Model, PrimaryKey, Table } from "sequelize-typescript";
 
 import { IUser, UserType } from "../../interfaces/models/IUser";
@@ -17,7 +17,7 @@ import { UserPreviousWork } from "./UserPreviousWork";
 
 @Table({
   tableName: "users",
-  paranoid: true
+  paranoid: true,
 })
 export class User extends Model<User> implements IUser {
   // Class Methods
@@ -30,16 +30,16 @@ export class User extends Model<User> implements IUser {
     do {
       id = `${new Date().getFullYear()}${generate({charset: "numeric", length: 10})}`;
       user = await User.findOne({where: { userId: {[Op.eq]: id} }});
-      if(!user) {
-        instance.userId = id;  
+      if (!user) {
+        instance.userId = id;
       }
     }
-    while(!!user);
+    while (!!user);
   }
 
   @BeforeCreate
   private static async checkUsername(instance: User) {
-    if(await this.findOne({where: { username: {[Op.eq]: instance.username} }})) {
+    if (await this.findOne({where: { username: {[Op.eq]: instance.username} }})) {
       throw new Error(`Username ${instance.username} is already taken`);
     }
   }
@@ -48,40 +48,40 @@ export class User extends Model<User> implements IUser {
   @BeforeCreate
   private static async hashPassword(instance: User) {
     // @ts-ignore
-    if(instance.password !== instance._previousDataValues.password) {
+    if (instance.password !== instance._previousDataValues.password) {
       instance.password = await hash(instance.password, 12);
     }
   }
 
-  // End Class Methods 
-  
+  // End Class Methods
+
   // Database Columns
 
   @ForeignKey(() => Program)
   @AllowNull(false)
   @Column(DataType.STRING)
   public enrolledProgram?: string;
-  
+
   @AllowNull(false)
-  @Column(DataType.STRING) 
-  public username: string;  
-  
+  @Column(DataType.STRING)
+  public username: string;
+
   @AllowNull(false)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public password: string;
-  
+
   @PrimaryKey
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public userId: string;
-  
+
   @AllowNull(false)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public type: UserType;
 
   // End Database Columns
 
   // Model Relationships
-  
+
   @HasOne(() => UserAddress)
   public address: UserAddress;
 

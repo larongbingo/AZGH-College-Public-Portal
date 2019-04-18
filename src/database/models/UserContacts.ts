@@ -6,7 +6,7 @@ import { User } from "./User";
 
 @Table({
   tableName: "userContacts",
-  paranoid: true
+  paranoid: true,
 })
 export class UserContacts extends Model<UserContacts> implements IUserContacts {
   // Table Columns
@@ -17,15 +17,15 @@ export class UserContacts extends Model<UserContacts> implements IUserContacts {
   public userId: string;
 
   @AllowNull(true)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public telephoneNumber?: string | undefined;
-  
+
   @AllowNull(false)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public mobileNumber: string;
-  
+
   @AllowNull(false)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public emailAddress: string;
 
   // End Table Columns

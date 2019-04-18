@@ -6,7 +6,7 @@ import { User } from "./User";
 
 @Table({
   tableName: "userDetails",
-  paranoid: true
+  paranoid: true,
 })
 export class UserDetails extends Model<UserDetails> implements IUserDetails {
   // Table Columns
@@ -51,7 +51,7 @@ export class UserDetails extends Model<UserDetails> implements IUserDetails {
   @AllowNull(false)
   @Column(DataType.STRING)
   public birthPlace: string;
-  
+
   @AllowNull(false)
   @Column(DataType.STRING)
   public religion: string;

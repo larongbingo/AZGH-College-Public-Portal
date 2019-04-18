@@ -7,19 +7,19 @@ import { User } from "./User";
 
 @Table({
   tableName: "studentSchedules",
-  paranoid: true
+  paranoid: true,
 })
 export class StudentSchedule extends Model<StudentSchedule> implements IStudentSchedule {
 
   // Model Columns
   @ForeignKey(() => User)
   @AllowNull(false)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public studentId: string;
-  
+
   @ForeignKey(() => Schedule)
   @AllowNull(false)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public scheduleCode: string;
   // End Model Columns
 

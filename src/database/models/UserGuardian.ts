@@ -6,7 +6,7 @@ import { User } from "./User";
 
 @Table({
   tableName: "userGuardians",
-  paranoid: true
+  paranoid: true,
 })
 export class UserGuardian extends Model<UserGuardian> implements IUserGuardian {
   // Table Columns
@@ -15,7 +15,7 @@ export class UserGuardian extends Model<UserGuardian> implements IUserGuardian {
   @AllowNull(false)
   @Column(DataType.STRING)
   public userId: string;
-  
+
   @AllowNull(false)
   @Column(DataType.STRING)
   public firstName: string;
@@ -35,7 +35,7 @@ export class UserGuardian extends Model<UserGuardian> implements IUserGuardian {
   @AllowNull(false)
   @Column(DataType.STRING)
   public emailAddress: string;
-  
+
   @AllowNull(false)
   @Column(DataType.STRING)
   public occupation: string;

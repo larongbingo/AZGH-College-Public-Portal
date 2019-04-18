@@ -4,14 +4,14 @@ import { IRoom } from "../../interfaces/models/IRoom";
 
 @Table({
   tableName: "rooms",
-  paranoid: true
+  paranoid: true,
 })
 export class Room extends Model<Room> implements IRoom {
   @AllowNull(false)
-  @Column(DataType.STRING) 
-  public roomCode: string;  
-  
+  @Column(DataType.STRING)
+  public roomCode: string;
+
   @AllowNull(true)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public description: string;
 }

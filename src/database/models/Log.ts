@@ -6,30 +6,30 @@ import { User } from "./User";
 
 @Table({
   tableName: "logs",
-  paranoid: true
+  paranoid: true,
 })
 export class Log extends Model<Log> implements ILog {
   // Model Columns
 
   @ForeignKey(() => User)
   @AllowNull(false)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public userId: string;
-  
+
   @AllowNull(false)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public event: string;
 
   @AllowNull(false)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public description: string;
 
   @AllowNull(true)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public reqParams?: string | undefined;
-  
+
   @AllowNull(true)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public res?: string | undefined;
 
   // End Model Columns

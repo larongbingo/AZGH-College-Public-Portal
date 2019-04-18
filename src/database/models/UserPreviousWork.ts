@@ -6,33 +6,33 @@ import { User } from "./User";
 
 @Table({
   tableName: "usersPreviousWork",
-  paranoid: true
+  paranoid: true,
 })
 export class UserPreviousWork extends Model<UserPreviousWork> implements IUserPreviousWork {
   // Model Columns
   @ForeignKey(() => User)
   @AllowNull(false)
-  @Column(DataType.STRING) 
-  public userId: string; 
+  @Column(DataType.STRING)
+  public userId: string;
 
   @AllowNull(false)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public previousJobTitle: string;
 
   @AllowNull(false)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public previousCompany: string;
 
   @AllowNull(false)
-  @Column(DataType.STRING) 
+  @Column(DataType.STRING)
   public jobDescription: string;
 
   @AllowNull(false)
-  @Column(DataType.DATE) 
+  @Column(DataType.DATE)
   public startingDate: Date;
 
   @AllowNull(false)
-  @Column(DataType.DATE) 
+  @Column(DataType.DATE)
   public endingDate: Date;
   // End Model Columns
 

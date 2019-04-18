@@ -7,25 +7,25 @@ import { Program } from "./Program";
 
 @Table({
   tableName: "subjects",
-  paranoid: true
+  paranoid: true,
 })
 export class Subject extends Model<Subject> implements ISubject {
-  // Model Columns 
+  // Model Columns
 
   @ForeignKey(() => Program)
   @AllowNull(false)
   @Column(DataType.STRING)
   public programCode: string;
-   
+
   @PrimaryKey
   @AllowNull(false)
   @Column(DataType.STRING)
   public subjectCode: string;
-  
+
   @AllowNull(false)
   @Column(DataType.STRING)
   public title: string;
-  
+
   @AllowNull(false)
   @Column(DataType.STRING)
   public description: string;

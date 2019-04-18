@@ -6,17 +6,17 @@ import { Schedule } from "./Schedule";
 
 @Table({
   tableName: "semesters",
-  paranoid: true
+  paranoid: true,
 })
 export class Semester extends Model<Semester> implements ISemester {
   // Model Columns
 
   @Column(DataType.STRING)
-  public semsterCode: string;  
-  
+  public semsterCode: string;
+
   @Column(DataType.STRING)
   public startingDate: Date;
-  
+
   @Column(DataType.STRING)
   public endingDate: Date;
 

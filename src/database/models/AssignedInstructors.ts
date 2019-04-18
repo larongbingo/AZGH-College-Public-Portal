@@ -9,32 +9,32 @@ import { User } from "./User";
 
 @Table({
   tableName: "assignedInstructors",
-  paranoid: true
+  paranoid: true,
 })
 export class AssignedInstructors extends Model<AssignedInstructors> implements IAssignedInstructors {
   // Class Methods
 
   private static async verifyAdminStatus(instance: AssignedInstructors) {
-    let user = await User.findOne({where: { userId: {[Op.eq]: instance.userId} }});
-    
-    if(!user) {
+    const user = await User.findOne({where: { userId: {[Op.eq]: instance.userId} }});
+
+    if (!user) {
       throw new Error(`User ${instance.userId} does not exist`);
     }
 
-    if(user.type !== UserType.Admin) {
+    if (user.type !== UserType.Admin) {
       throw new Error(`User ${instance.userId} does not have proper permissions`);
     }
   }
 
   // End Class Methods
-  
+
   // Model Columns
 
   @ForeignKey(() => User)
   @AllowNull(false)
   @Column(DataType.STRING)
-  public userId: string;  
-  
+  public userId: string;
+
   @ForeignKey(() => Schedule)
   @AllowNull(false)
   @Column(DataType.STRING)
