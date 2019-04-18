@@ -2,7 +2,7 @@ import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
 
 import { ISemester } from "../../interfaces/models/ISemester";
 
-import { Schedule } from "./Schedule";
+import { Schedule } from "./Schedule.entity";
 
 @Table({
   tableName: "semesters",

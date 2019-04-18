@@ -1,15 +1,14 @@
 import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
 
-import { IUserPreviousSchool } from "../..//interfaces/models/IUserPreviousSchool";
+import { IUserDetails } from "../../interfaces/models/IUserDetail";
 
-import { User } from "./User";
+import { User } from "./User.entity";
 
 @Table({
-  tableName: "userPreviousSchool",
+  tableName: "userDetails",
   paranoid: true,
 })
-export class UserPreviousSchool extends Model<UserPreviousSchool> implements IUserPreviousSchool {
-
+export class UserDetails extends Model<UserDetails> implements IUserDetails {
   // Table Columns
 
   @ForeignKey(() => User)
@@ -19,32 +18,43 @@ export class UserPreviousSchool extends Model<UserPreviousSchool> implements IUs
 
   @AllowNull(false)
   @Column(DataType.STRING)
-  public schoolType: "High School" | "Junior High" | "Senior High" | "SPED & Others" | "College";
+  public firstName: string;
 
   @AllowNull(false)
   @Column(DataType.STRING)
-  public schoolName: string;
+  public middleName: string;
+
+  @AllowNull(false)
+  @Column(DataType.STRING)
+  public lastName: string;
 
   @AllowNull(true)
   @Column(DataType.STRING)
-  public program?: string | undefined;
-
-  @AllowNull(true)
-  @Column(DataType.STRING)
-  public dateOfGraduation?: Date | undefined;
+  public suffix?: string | undefined;
 
   @AllowNull(false)
   @Column(DataType.STRING)
-  public schoolYear: string;
+  public gender: string;
 
   @AllowNull(false)
   @Column(DataType.STRING)
-  public yearOrGrade: "4th Year" | "Grade 10" | "Grade 11" | "Grade 12" | "1st Year College" |
-  "2nd Year College" | "3rd Year College" | "4th Year College";
+  public civilStatus: string;
 
   @AllowNull(false)
   @Column(DataType.STRING)
-  public term: "1st" | "2nd";
+  public citizenship: string;
+
+  @AllowNull(false)
+  @Column(DataType.STRING)
+  public dateOfBirth: Date;
+
+  @AllowNull(false)
+  @Column(DataType.STRING)
+  public birthPlace: string;
+
+  @AllowNull(false)
+  @Column(DataType.STRING)
+  public religion: string;
 
   // End Table Columns
 
@@ -54,5 +64,4 @@ export class UserPreviousSchool extends Model<UserPreviousSchool> implements IUs
   public user: User;
 
   // End Model Relationships
-
 }

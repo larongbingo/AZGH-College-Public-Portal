@@ -2,9 +2,9 @@ import { AllowNull, BelongsToMany, Column, DataType, HasMany, Model, PrimaryKey,
 
 import { IProgram } from "../../interfaces/models/IProgram";
 
-import { Curriculum } from "./Curriculum";
-import { Subject } from "./Subject";
-import { User } from "./User";
+import { Curriculum } from "./Curriculum.entity";
+import { Subject } from "./Subject.entity";
+import { User } from "./User.entity";
 
 @Table({
   tableName: "programs",

@@ -6,14 +6,14 @@ import { AllowNull, BeforeCreate, BeforeUpdate, BelongsTo,
 
 import { IUser, UserType } from "../../interfaces/models/IUser";
 
-import { Log } from "./Log";
-import { Program } from "./Program";
-import { UserAddress } from "./UserAddress";
-import { UserContacts } from "./UserContacts";
-import { UserDetails } from "./UserDetails";
-import { UserGuardian } from "./UserGuardian";
-import { UserPreviousSchool } from "./UserPreviousSchool";
-import { UserPreviousWork } from "./UserPreviousWork";
+import { Log } from "./Log.entity";
+import { Program } from "./Program.entity";
+import { UserAddress } from "./UserAddress.entity";
+import { UserContacts } from "./UserContacts.entity";
+import { UserDetails } from "./UserDetails.entity";
+import { UserGuardian } from "./UserGuardian.entity";
+import { UserPreviousSchool } from "./UserPreviousSchool.entity";
+import { UserPreviousWork } from "./UserPreviousWork.entity";
 
 @Table({
   tableName: "users",

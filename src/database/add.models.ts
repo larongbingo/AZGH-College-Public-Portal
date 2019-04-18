@@ -1,19 +1,19 @@
 import { Sequelize } from "sequelize-typescript";
 
-import { AssignedInstructors } from "./models/AssignedInstructors";
-import { Curriculum } from "./models/Curriculum";
-import { Log } from "./models/Log";
-import { Program } from "./models/Program";
-import { Room } from "./models/Room";
-import { Schedule } from "./models/Schedule";
-import { StudentSchedule } from "./models/StudentSchedule";
-import { Subject } from "./models/Subject";
-import { User } from "./models/User";
-import { UserAddress } from "./models/UserAddress";
-import { UserContacts } from "./models/UserContacts";
-import { UserDetails } from "./models/UserDetails";
-import { UserGuardian } from "./models/UserGuardian";
-import { UserPreviousSchool } from "./models/UserPreviousSchool";
+import { AssignedInstructors } from "./models/AssignedInstructors.entity";
+import { Curriculum } from "./models/Curriculum.entity";
+import { Log } from "./models/Log.entity";
+import { Program } from "./models/Program.entity";
+import { Room } from "./models/Room.entity";
+import { Schedule } from "./models/Schedule.entity";
+import { StudentSchedule } from "./models/StudentSchedule.entuty";
+import { Subject } from "./models/Subject.entity";
+import { User } from "./models/User.entity";
+import { UserAddress } from "./models/UserAddress.entity";
+import { UserContacts } from "./models/UserContacts.entity";
+import { UserDetails } from "./models/UserDetails.entity";
+import { UserGuardian } from "./models/UserGuardian.entity";
+import { UserPreviousSchool } from "./models/UserPreviousSchool.entity";
 
 export function addModels(sequelize: Sequelize) {
   sequelize.addModels([

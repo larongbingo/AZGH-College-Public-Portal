@@ -4,8 +4,8 @@ import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, Table } from
 import { IAssignedInstructors } from "../../interfaces/models/IAssignedInstructors";
 import { UserType } from "../../interfaces/models/IUser";
 
-import { Schedule } from "./Schedule";
-import { User } from "./User";
+import { Schedule } from "./Schedule.entity";
+import { User } from "./User.entity";
 
 @Table({
   tableName: "assignedInstructors",

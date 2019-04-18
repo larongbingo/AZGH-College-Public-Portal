@@ -2,7 +2,7 @@ import { AllowNull, BelongsTo, Column, DataType, ForeignKey, HasOne, Model, Tabl
 
 import { IUserGuardian } from "../../interfaces/models/IUserGuardian";
 
-import { User } from "./User";
+import { User } from "./User.entity";
 
 @Table({
   tableName: "userGuardians",

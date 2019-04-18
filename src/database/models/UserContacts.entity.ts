@@ -2,7 +2,7 @@ import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, Table } from
 
 import { IUserContacts } from "../../interfaces/models/IUserContacts";
 
-import { User } from "./User";
+import { User } from "./User.entity";
 
 @Table({
   tableName: "userContacts",

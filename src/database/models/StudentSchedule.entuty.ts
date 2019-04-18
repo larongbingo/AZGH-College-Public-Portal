@@ -2,8 +2,8 @@ import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, Table } from
 
 import { IStudentSchedule } from "../../interfaces/models/IStudentSchedule";
 
-import { Schedule } from "./Schedule";
-import { User } from "./User";
+import { Schedule } from "./Schedule.entity";
+import { User } from "./User.entity";
 
 @Table({
   tableName: "studentSchedules",

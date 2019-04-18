@@ -2,8 +2,8 @@ import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, Table } from
 
 import { ICurriculum } from "../../interfaces/models/ICurriculum";
 
-import { Program } from "./Program";
-import { Subject } from "./Subject";
+import { Program } from "./Program.entity";
+import { Subject } from "./Subject.entity";
 
 @Table({
   tableName: "curriculum",

@@ -2,8 +2,8 @@ import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, PrimaryKey, 
 
 import { ISchedule } from "../../interfaces/models/ISchedule";
 
-import { Subject } from "./Subject";
-import { User } from "./User";
+import { Subject } from "./Subject.entity";
+import { User } from "./User.entity";
 
 @Table({
   tableName: "schedules",
