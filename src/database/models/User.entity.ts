@@ -70,6 +70,10 @@ export class User extends Model<User> implements IUser {
   @Column(DataType.STRING)
   public password: string;
 
+  @AllowNull(true)
+  @Column(DataType.STRING)
+  public token: string;
+
   @PrimaryKey
   @Column(DataType.STRING)
   public userId: string;
