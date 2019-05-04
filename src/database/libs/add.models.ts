@@ -14,6 +14,7 @@ import { UserContacts } from "../models/UserContacts.entity";
 import { UserDetails } from "../models/UserDetails.entity";
 import { UserGuardian } from "../models/UserGuardian.entity";
 import { UserPreviousSchool } from "../models/UserPreviousSchool.entity";
+import { UserPreviousWork } from "../models/UserPreviousWork.entity";
 
 export function addModels(sequelize: Sequelize) {
   sequelize.addModels([
@@ -31,5 +32,6 @@ export function addModels(sequelize: Sequelize) {
     UserDetails,
     UserGuardian,
     UserPreviousSchool,
+    UserPreviousWork,
   ]);
 }
