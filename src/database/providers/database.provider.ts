@@ -20,7 +20,6 @@ export const databaseProvider: Provider = {
       ...(config as ISequelizeConfig),
     });
     addModels(sequelize);
-    await sequelize.sync();
     return sequelize;
   },
 };
