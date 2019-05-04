@@ -1,16 +1,17 @@
-import { Controller, Get, UseGuards, Headers, Body, Post, UnprocessableEntityException, UsePipes, Put } from "@nestjs/common";
+import { Controller, Get, UseGuards, Headers, Body, Post, UnprocessableEntityException, UsePipes, Put, Inject } from "@nestjs/common";
 import { sign } from "jsonwebtoken";
 import { AuthGuard } from "@nestjs/passport";
 
-import { JWT_PRIVATE_KEY } from "../../constants/jsonwebtokens";
 import { CredentialsDto } from "./dto/credentials.dto";
 import { AuthService } from "./auth.service";
 import { LogInValidationPipe } from "./pipes/login-validation.pipe";
+import { JWT_KEY_PROVIDER } from "./providers/jwt-key.provider";
 
 @Controller("auth")
 export class AuthController {
   constructor(
     private readonly authService: AuthService,
+    @Inject(JWT_KEY_PROVIDER) private readonly jwtPrivateKey: string,
   ) {}
 
   @Get("verify")
@@ -37,7 +38,7 @@ export class AuthController {
       return new UnprocessableEntityException("Incorrect Username/Password");
     }
 
-    user.token = sign({username: user.username, id: user.id}, JWT_PRIVATE_KEY);
+    user.token = sign({username: user.username, id: user.id}, this.jwtPrivateKey);
     user.save();
 
     return {iat: Date.now(), token: user.token};
