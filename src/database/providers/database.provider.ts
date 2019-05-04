@@ -10,10 +10,10 @@ export const databaseProvider: Provider = {
   provide: SEQUELIZE_REPOSITORY,
   useFactory: async () => {
     let config: ISequelizeConfig;
-    if (process.env.NODE_ENV === "development") {
-      config = development;
-    } else {
+    if (process.env.NODE_ENV === "production") {
       config = production;
+    } else {
+      config = development;
     }
 
     const sequelize = new Sequelize({
