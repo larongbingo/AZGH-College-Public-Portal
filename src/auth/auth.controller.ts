@@ -1,4 +1,15 @@
-import { Controller, Get, UseGuards, Headers, Body, Post, UnprocessableEntityException, UsePipes, Put, Inject } from "@nestjs/common";
+import {
+  Controller,
+  Get,
+  UseGuards,
+  Headers,
+  Body,
+  Post,
+  UnprocessableEntityException,
+  UsePipes,
+  Put,
+  Inject,
+} from "@nestjs/common";
 import { sign } from "jsonwebtoken";
 import { AuthGuard } from "@nestjs/passport";
 
@@ -17,7 +28,7 @@ export class AuthController {
   @Get("verify")
   @UseGuards(AuthGuard("bearer"))
   public async verifySession(@Headers("authorization") sessionToken: string) {
-    return {iat: Date.now(), isSessionValid: true, sessionToken};
+    return { iat: Date.now(), isSessionValid: true, sessionToken };
   }
 
   @Put()
@@ -26,21 +37,27 @@ export class AuthController {
     const user = await this.authService.validateUser(sessionToken);
     user.token = null;
     user.save();
-    return {iat: Date.now()};
+    return { iat: Date.now() };
   }
 
   @Post()
   @UsePipes(new LogInValidationPipe())
   public async login(@Body() credentialDto: CredentialsDto) {
-    const user = await this.authService.validateCredentials(credentialDto.username, credentialDto.password);
+    const user = await this.authService.validateCredentials(
+      credentialDto.username,
+      credentialDto.password,
+    );
 
     if (!user) {
       return new UnprocessableEntityException("Incorrect Username/Password");
     }
 
-    user.token = sign({username: user.username, id: user.id}, this.jwtPrivateKey);
+    user.token = sign(
+      { username: user.username, id: user.id },
+      this.jwtPrivateKey,
+    );
     user.save();
 
-    return {iat: Date.now(), token: user.token};
+    return { iat: Date.now(), token: user.token };
   }
 }

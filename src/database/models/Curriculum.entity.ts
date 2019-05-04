@@ -1,4 +1,12 @@
-import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import {
+  AllowNull,
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from "sequelize-typescript";
 
 import { ICurriculum } from "../../interfaces/models/ICurriculum";
 
@@ -33,5 +41,4 @@ export class Curriculum extends Model<Curriculum> implements ICurriculum {
   public subject: Subject;
 
   // End Model Relationships
-
 }

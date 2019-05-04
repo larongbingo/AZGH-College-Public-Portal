@@ -1,4 +1,13 @@
-import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, PrimaryKey, Table } from "sequelize-typescript";
+import {
+  AllowNull,
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  PrimaryKey,
+  Table,
+} from "sequelize-typescript";
 
 import { ISchedule } from "../../interfaces/models/ISchedule";
 
@@ -30,5 +39,4 @@ export class Schedule extends Model<Schedule> implements ISchedule {
   public subject: Subject;
 
   // End Model Relationships
-
 }

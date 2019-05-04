@@ -1,4 +1,3 @@
-
 export interface IStudentSchedule {
   /**
    * The id of the student

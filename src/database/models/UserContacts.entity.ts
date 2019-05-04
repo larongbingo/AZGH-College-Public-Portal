@@ -1,4 +1,12 @@
-import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import {
+  AllowNull,
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from "sequelize-typescript";
 
 import { IUserContacts } from "../../interfaces/models/IUserContacts";
 
@@ -36,5 +44,4 @@ export class UserContacts extends Model<UserContacts> implements IUserContacts {
   public user: User;
 
   // End Model Relationships
-
 }

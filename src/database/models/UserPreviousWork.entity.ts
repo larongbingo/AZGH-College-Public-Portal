@@ -1,4 +1,12 @@
-import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import {
+  AllowNull,
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from "sequelize-typescript";
 
 import { IUserPreviousWork } from "../../interfaces/models/IUserPreviousWork";
 
@@ -8,7 +16,8 @@ import { User } from "./User.entity";
   tableName: "usersPreviousWork",
   paranoid: true,
 })
-export class UserPreviousWork extends Model<UserPreviousWork> implements IUserPreviousWork {
+export class UserPreviousWork extends Model<UserPreviousWork>
+  implements IUserPreviousWork {
   // Model Columns
   @ForeignKey(() => User)
   @AllowNull(false)

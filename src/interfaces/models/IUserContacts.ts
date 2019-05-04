@@ -1,4 +1,3 @@
-
 export interface IUserContacts {
   /**
    * Foreign Key from User

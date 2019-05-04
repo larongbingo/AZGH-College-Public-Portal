@@ -1,4 +1,3 @@
-
 export interface ICurriculum {
   /**
    * Foreign Key from Program

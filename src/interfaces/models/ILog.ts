@@ -1,4 +1,3 @@
-
 export interface ILog {
   /**
    * The user that initiated the event

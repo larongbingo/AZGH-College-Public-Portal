@@ -1,4 +1,13 @@
-import { AllowNull, BelongsToMany, Column, DataType, ForeignKey, Model, PrimaryKey, Table } from "sequelize-typescript";
+import {
+  AllowNull,
+  BelongsToMany,
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  PrimaryKey,
+  Table,
+} from "sequelize-typescript";
 
 import { ISubject } from "../../interfaces/models/ISubject";
 

@@ -17,7 +17,7 @@ export const databaseProvider: Provider = {
     }
 
     const sequelize = new Sequelize({
-      ...config as ISequelizeConfig,
+      ...(config as ISequelizeConfig),
     });
     addModels(sequelize);
     await sequelize.sync();

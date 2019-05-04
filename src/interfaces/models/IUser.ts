@@ -1,6 +1,4 @@
-
 export interface IUser {
-
   /**
    * A Foreign Key from Program
    * @see {@link IProgram.ts}
@@ -32,5 +30,5 @@ export interface IUser {
 export enum UserType {
   Student = "Student",
   Professor = "Professor",
-  Admin = "Admin"
+  Admin = "Admin",
 }

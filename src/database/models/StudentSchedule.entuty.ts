@@ -1,4 +1,12 @@
-import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import {
+  AllowNull,
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from "sequelize-typescript";
 
 import { IStudentSchedule } from "../../interfaces/models/IStudentSchedule";
 
@@ -9,8 +17,8 @@ import { User } from "./User.entity";
   tableName: "studentSchedules",
   paranoid: true,
 })
-export class StudentSchedule extends Model<StudentSchedule> implements IStudentSchedule {
-
+export class StudentSchedule extends Model<StudentSchedule>
+  implements IStudentSchedule {
   // Model Columns
   @ForeignKey(() => User)
   @AllowNull(false)
@@ -30,5 +38,4 @@ export class StudentSchedule extends Model<StudentSchedule> implements IStudentS
   @BelongsTo(() => Schedule)
   public schedule: Schedule;
   // End Model Relationships
-
 }

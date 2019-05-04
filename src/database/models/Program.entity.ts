@@ -1,4 +1,13 @@
-import { AllowNull, BelongsToMany, Column, DataType, HasMany, Model, PrimaryKey, Table } from "sequelize-typescript";
+import {
+  AllowNull,
+  BelongsToMany,
+  Column,
+  DataType,
+  HasMany,
+  Model,
+  PrimaryKey,
+  Table,
+} from "sequelize-typescript";
 
 import { IProgram } from "../../interfaces/models/IProgram";
 
@@ -11,7 +20,6 @@ import { User } from "./User.entity";
   paranoid: true,
 })
 export class Program extends Model<Program> implements IProgram {
-
   // Model Columns
 
   @PrimaryKey
@@ -33,5 +41,4 @@ export class Program extends Model<Program> implements IProgram {
   @BelongsToMany(() => Subject, () => Curriculum)
   public subjects: Subject[];
   // End Model Relationships
-
 }

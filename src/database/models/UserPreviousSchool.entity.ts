@@ -1,4 +1,12 @@
-import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import {
+  AllowNull,
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from "sequelize-typescript";
 
 import { IUserPreviousSchool } from "../../interfaces/models/IUserPreviousSchool";
 
@@ -8,8 +16,8 @@ import { User } from "./User.entity";
   tableName: "userPreviousSchool",
   paranoid: true,
 })
-export class UserPreviousSchool extends Model<UserPreviousSchool> implements IUserPreviousSchool {
-
+export class UserPreviousSchool extends Model<UserPreviousSchool>
+  implements IUserPreviousSchool {
   // Table Columns
 
   @ForeignKey(() => User)
@@ -19,7 +27,12 @@ export class UserPreviousSchool extends Model<UserPreviousSchool> implements IUs
 
   @AllowNull(false)
   @Column(DataType.STRING)
-  public schoolType: "High School" | "Junior High" | "Senior High" | "SPED & Others" | "College";
+  public schoolType:
+    | "High School"
+    | "Junior High"
+    | "Senior High"
+    | "SPED & Others"
+    | "College";
 
   @AllowNull(false)
   @Column(DataType.STRING)
@@ -39,8 +52,15 @@ export class UserPreviousSchool extends Model<UserPreviousSchool> implements IUs
 
   @AllowNull(false)
   @Column(DataType.STRING)
-  public yearOrGrade: "4th Year" | "Grade 10" | "Grade 11" | "Grade 12" | "1st Year College" |
-  "2nd Year College" | "3rd Year College" | "4th Year College";
+  public yearOrGrade:
+    | "4th Year"
+    | "Grade 10"
+    | "Grade 11"
+    | "Grade 12"
+    | "1st Year College"
+    | "2nd Year College"
+    | "3rd Year College"
+    | "4th Year College";
 
   @AllowNull(false)
   @Column(DataType.STRING)
@@ -54,5 +74,4 @@ export class UserPreviousSchool extends Model<UserPreviousSchool> implements IUs
   public user: User;
 
   // End Model Relationships
-
 }

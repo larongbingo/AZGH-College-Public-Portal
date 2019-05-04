@@ -1,8 +1,20 @@
 import { compare, hash } from "bcrypt";
 import { generate } from "randomstring";
 import { Op } from "sequelize";
-import { AllowNull, BeforeCreate, BeforeUpdate, BelongsTo,
-  Column, DataType, ForeignKey, HasMany, HasOne, Model, PrimaryKey, Table } from "sequelize-typescript";
+import {
+  AllowNull,
+  BeforeCreate,
+  BeforeUpdate,
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  HasMany,
+  HasOne,
+  Model,
+  PrimaryKey,
+  Table,
+} from "sequelize-typescript";
 
 import { IUser, UserType } from "../../interfaces/models/IUser";
 
@@ -28,18 +40,24 @@ export class User extends Model<User> implements IUser {
     let id;
 
     do {
-      id = `${new Date().getFullYear()}${generate({charset: "numeric", length: 10})}`;
-      user = await User.findOne({where: { userId: {[Op.eq]: id} }});
+      id = `${new Date().getFullYear()}${generate({
+        charset: "numeric",
+        length: 10,
+      })}`;
+      user = await User.findOne({ where: { userId: { [Op.eq]: id } } });
       if (!user) {
         instance.userId = id;
       }
-    }
-    while (!!user);
+    } while (!!user);
   }
 
   @BeforeCreate
   private static async checkUsername(instance: User) {
-    if (await this.findOne({where: { username: {[Op.eq]: instance.username} }})) {
+    if (
+      await this.findOne({
+        where: { username: { [Op.eq]: instance.username } },
+      })
+    ) {
       throw new Error(`Username ${instance.username} is already taken`);
     }
   }

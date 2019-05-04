@@ -1,5 +1,13 @@
 import { Op } from "sequelize";
-import { AllowNull, BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import {
+  AllowNull,
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from "sequelize-typescript";
 
 import { IAssignedInstructors } from "../../interfaces/models/IAssignedInstructors";
 import { UserType } from "../../interfaces/models/IUser";
@@ -11,18 +19,23 @@ import { User } from "./User.entity";
   tableName: "assignedInstructors",
   paranoid: true,
 })
-export class AssignedInstructors extends Model<AssignedInstructors> implements IAssignedInstructors {
+export class AssignedInstructors extends Model<AssignedInstructors>
+  implements IAssignedInstructors {
   // Class Methods
 
   private static async verifyAdminStatus(instance: AssignedInstructors) {
-    const user = await User.findOne({where: { userId: {[Op.eq]: instance.userId} }});
+    const user = await User.findOne({
+      where: { userId: { [Op.eq]: instance.userId } },
+    });
 
     if (!user) {
       throw new Error(`User ${instance.userId} does not exist`);
     }
 
     if (user.type !== UserType.Admin) {
-      throw new Error(`User ${instance.userId} does not have proper permissions`);
+      throw new Error(
+        `User ${instance.userId} does not have proper permissions`,
+      );
     }
   }
 
@@ -51,5 +64,4 @@ export class AssignedInstructors extends Model<AssignedInstructors> implements I
   public user: User;
 
   // End Model Relationships
-
 }

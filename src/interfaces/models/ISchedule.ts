@@ -1,4 +1,3 @@
-
 export interface ISchedule {
   scheduleCode: string;
 
@@ -7,5 +6,4 @@ export interface ISchedule {
    * @see {@link ISubject.ts}
    */
   subjectCode: string;
-
 }

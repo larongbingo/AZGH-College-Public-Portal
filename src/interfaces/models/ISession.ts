@@ -1,4 +1,3 @@
-
 export interface ISession {
   /**
    * A Foreign Key from Schedule

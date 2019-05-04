@@ -1,4 +1,3 @@
-
 export interface ISubject {
   /**
    * A Foreign Key from Program

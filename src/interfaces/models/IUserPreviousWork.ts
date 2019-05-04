@@ -1,4 +1,3 @@
-
 /**
  * Represents the previous job experience of the User
  */

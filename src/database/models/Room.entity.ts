@@ -1,4 +1,10 @@
-import { AllowNull, Column, DataType, Model, Table } from "sequelize-typescript";
+import {
+  AllowNull,
+  Column,
+  DataType,
+  Model,
+  Table,
+} from "sequelize-typescript";
 
 import { IRoom } from "../../interfaces/models/IRoom";
 

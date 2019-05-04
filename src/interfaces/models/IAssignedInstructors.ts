@@ -1,4 +1,3 @@
-
 export interface IAssignedInstructors {
   /**
    * Foreign Key from User

@@ -1,4 +1,3 @@
-
 export interface IUserDetails {
   /**
    * Foreign Key from User
