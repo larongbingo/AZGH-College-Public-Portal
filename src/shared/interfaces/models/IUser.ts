@@ -19,12 +19,12 @@ export interface IUser {
   /**
    * Unique Identifier of the account
    */
-  userId: string;
+  userId?: string;
 
   /**
    * Refers to the level of access
    */
-  type: UserType;
+  type?: UserType;
 }
 
 export enum UserType {
