@@ -1,4 +1,4 @@
-import { Injectable, Inject } from "@nestjs/common";
+import { Injectable, Inject, BadRequestException } from "@nestjs/common";
 import { FilteredModelAttributes } from "sequelize-typescript/lib/models/Model";
 import { ICreateOptions, IFindOptions } from "sequelize-typescript";
 
@@ -15,10 +15,18 @@ export class UserAddressService {
   }
 
   public async findOne(options?: IFindOptions<UserAddress>) {
-    return this.userAddressRepository.findOne(options);
+    const userAddress = await this.userAddressRepository.findOne(options);
+    if (!userAddress) {
+      throw new BadRequestException("User does not have a UserAddress yet, create a UserAddress first");
+    }
+    return userAddress;
   }
 
   public async findAll(options?: IFindOptions<UserAddress>) {
-    return this.userAddressRepository.findAll(options);
+    const userAddress = await this.userAddressRepository.findAll(options);
+    if (!userAddress) {
+      throw new BadRequestException("User does not have a UserAddress yet, create a UserAddress first");
+    }
+    return userAddress;
   }
 }
