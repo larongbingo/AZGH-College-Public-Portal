@@ -8,7 +8,7 @@ import { CreateUserDto } from "./dto/create-user.dto";
 @Controller("/user")
 export class UserController {
   constructor(
-    @Inject() private readonly userService: UserService,
+    private readonly userService: UserService,
   ) {}
 
   @Post()

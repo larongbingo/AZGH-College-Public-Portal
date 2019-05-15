@@ -11,8 +11,8 @@ import { UserAddressService } from "./user-address.service";
 @Controller("/user/address")
 export class UserAddressController {
   constructor(
-    @Inject() private readonly userAddressService: UserAddressService,
-    @Inject() private readonly userService: UserService,
+    private readonly userAddressService: UserAddressService,
+    private readonly userService: UserService,
   ) {}
 
     @Get("/:userId")
