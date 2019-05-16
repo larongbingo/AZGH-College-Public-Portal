@@ -20,7 +20,7 @@ export class UserController {
   @Put()
   @UseGuards(AuthGuard("bearer"))
   public async updateUser(@Body() createUserDto: CreateUserDto) {
-    const user = await this.findOneUser(createUserDto.userId);
+    const user = await this.userService.findOneById(createUserDto.userId);
     Object.keys(createUserDto).forEach((key) => {
       if (key !== "userId") {
         user[key] = createUserDto[key];
@@ -33,16 +33,8 @@ export class UserController {
   @Delete()
   @UseGuards(AuthGuard("bearer"))
   public async deleteUser(@Body() createUserDto: CreateUserDto) {
-    const user = await this.findOneUser(createUserDto.userId);
+    const user = await this.userService.findOneById(createUserDto.userId);
     await user.destroy();
     return {iat: Date.now()};
-  }
-
-  private async findOneUser(id: string) {
-    const user = await this.userService.findOne({where: {id: {[Op.eq]: id}}});
-    if (!user) {
-      throw new UnprocessableEntityException("User does not exist");
-    }
-    return user;
   }
 }
