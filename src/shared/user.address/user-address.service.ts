@@ -4,10 +4,12 @@ import { ICreateOptions, IFindOptions } from "sequelize-typescript";
 
 import { UserAddress } from "../database/models/UserAddress.entity";
 
+import { USER_ADDRESS_PROVIDER } from "./user-address.provider";
+
 @Injectable()
 export class UserAddressService {
   constructor(
-    @Inject() private readonly userAddressRepository: typeof UserAddress,
+    @Inject(USER_ADDRESS_PROVIDER) private readonly userAddressRepository: typeof UserAddress,
   ) {}
 
   public async create(values: FilteredModelAttributes<UserAddress>, options?: ICreateOptions) {
