@@ -26,9 +26,6 @@ export class UserAddressService {
 
   public async findAll(options: IFindOptions<UserAddress>) {
     const userAddress = await this.userAddressRepository.findAll(options);
-    if (!userAddress) {
-      throw new BadRequestException("User does not have a UserAddress yet, create a UserAddress first");
-    }
     return userAddress;
   }
 }
