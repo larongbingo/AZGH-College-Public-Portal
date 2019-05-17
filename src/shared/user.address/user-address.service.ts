@@ -16,7 +16,7 @@ export class UserAddressService {
     return this.userAddressRepository.create(values, options);
   }
 
-  public async findOne(options?: IFindOptions<UserAddress>) {
+  public async findOne(options: IFindOptions<UserAddress>) {
     const userAddress = await this.userAddressRepository.findOne(options);
     if (!userAddress) {
       throw new BadRequestException("User does not have a UserAddress yet, create a UserAddress first");
@@ -24,7 +24,7 @@ export class UserAddressService {
     return userAddress;
   }
 
-  public async findAll(options?: IFindOptions<UserAddress>) {
+  public async findAll(options: IFindOptions<UserAddress>) {
     const userAddress = await this.userAddressRepository.findAll(options);
     if (!userAddress) {
       throw new BadRequestException("User does not have a UserAddress yet, create a UserAddress first");
