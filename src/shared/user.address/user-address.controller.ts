@@ -14,7 +14,6 @@ import { UserAddressService } from "./user-address.service";
 export class UserAddressController {
   constructor(
     private readonly userAddressService: UserAddressService,
-    private readonly userService: UserService,
   ) {}
 
     @Get()
@@ -36,10 +35,8 @@ export class UserAddressController {
   @UseGuards(AuthGuard("bearer"))
   public async createAddress(
     @Body() createUserAddressDto: CreateUserAddressDto,
-    @Headers("authorization") token: string,
+    @UserEntity() user: IUser,
   ) {
-    const user = await this.userService.findOneByToken(token);
-
     await this.userAddressService.create({
       ...createUserAddressDto,
       userId: user.userId,
@@ -52,9 +49,8 @@ export class UserAddressController {
   @UseGuards(AuthGuard("bearer"))
   public async updateAddress(
     @Body() updateUserAddressDto: UpdateUserAddressDto,
-    @Headers("authorization") token: string,
+    @UserEntity() user: IUser,
   ) {
-      const user = await this.userService.findOneByToken(token);
       const userAddress = await this.userAddressService.findOne({where: {userId: {[Op.eq]: user.userId}}});
 
       Object.keys(updateUserAddressDto).forEach(key => userAddress[key] = updateUserAddressDto[key]);
