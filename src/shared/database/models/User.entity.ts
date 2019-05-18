@@ -76,7 +76,7 @@ export class User extends Model<User> implements IUser {
   // Database Columns
 
   @ForeignKey(() => Program)
-  @AllowNull(false)
+  @AllowNull(true)
   @Column(DataType.STRING)
   public enrolledProgram?: string;
 
