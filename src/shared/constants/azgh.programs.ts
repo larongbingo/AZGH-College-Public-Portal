@@ -1,6 +1,6 @@
 import { IProgram } from "../interfaces/models/IProgram";
 
-export const subjects: IProgram[] = [
+export const programs: IProgram[] = [
   {
     programTitle: "Senior High School Strand - Humanities and Social Science (HUMMS)",
     programCode: "SNRHS-HUMMS",
