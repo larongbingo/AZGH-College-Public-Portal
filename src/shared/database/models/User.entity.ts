@@ -14,6 +14,7 @@ import {
   Model,
   PrimaryKey,
   Table,
+  Default,
 } from "sequelize-typescript";
 
 import { IUser, UserType } from "../../interfaces/models/IUser";
@@ -97,6 +98,7 @@ export class User extends Model<User> implements IUser {
   public userId: string;
 
   @AllowNull(false)
+  @Default(UserType.Student)
   @Column(DataType.STRING)
   public type: UserType;
 
