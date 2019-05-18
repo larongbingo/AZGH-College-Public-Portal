@@ -15,7 +15,7 @@ export class UserAddressController {
     private readonly userService: UserService,
   ) {}
 
-    @Get("/:userId")
+    @Get()
     @UseGuards(AuthGuard("bearer"))
     public async getAddress(@Headers("authorization") token: string, @Param("userId") userId: string) {
       const user = await this.userService.findOneByToken(token);
