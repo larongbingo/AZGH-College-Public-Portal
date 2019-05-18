@@ -3,5 +3,6 @@
  */
 export interface IProgram {
   programCode: string;
+  programTitle: string;
   description: string;
 }

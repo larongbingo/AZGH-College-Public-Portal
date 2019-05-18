@@ -27,9 +27,13 @@ export class Program extends Model<Program> implements IProgram {
   @Column(DataType.STRING)
   public programCode: string;
 
-  @AllowNull(false)
+  @AllowNull(true)
   @Column(DataType.STRING)
   public description: string;
+
+  @AllowNull(false)
+  @Column(DataType.STRING)
+  programTitle: string;
 
   // End Model Columns
 
