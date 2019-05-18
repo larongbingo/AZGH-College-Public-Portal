@@ -1,8 +1,10 @@
-import { Controller, Post, Body, Put, UseGuards, Inject, Headers, Get, Param, UnprocessableEntityException } from "@nestjs/common";
+import { Controller, Post, Body, Put, UseGuards, Headers, Get, Request } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import { Op } from "sequelize";
 
 import { UserService } from "../user/user.service";
+import { UserEntity } from "../decorators/user-entity.decorator";
+import { IUser } from "../interfaces/models/IUser";
 
 import { CreateUserAddressDto } from "./dto/create-user-address.dto";
 import { UpdateUserAddressDto } from "./dto/update-user-address.dto";
@@ -17,13 +19,8 @@ export class UserAddressController {
 
     @Get()
     @UseGuards(AuthGuard("bearer"))
-    public async getAddress(@Headers("authorization") token: string, @Param("userId") userId: string) {
-      const user = await this.userService.findOneByToken(token);
-      if (user.userId !== userId) {
-        throw new UnprocessableEntityException("The given id does not match with the token");
-      }
-
-      const userAddress = await this.userAddressService.findOne();
+    public async getAddress(@UserEntity() user: IUser) {
+      const userAddress = await this.userAddressService.findOne({where: {userId: {[Op.eq]: user.userId}}});
       return {
         streetNumber: userAddress.streetNumber,
         streetName: userAddress.streetName,
