@@ -6,7 +6,6 @@ import { UserModule } from "../user/user.module";
 import { UserAddressController } from "./user-address.controller";
 
 @Module({
-  imports: [UserModule],
   providers: [UserAddressProvider, UserAddressService],
   controllers: [UserAddressController],
   exports: [UserAddressService],
