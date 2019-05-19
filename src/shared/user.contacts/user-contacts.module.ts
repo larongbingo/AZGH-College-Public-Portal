@@ -7,4 +7,4 @@ import { UserContactsService } from "./user-contacts.service";
   providers: [UserContactsProvider, UserContactsService],
   exports: [UserContactsService],
 })
-export class UserContactModule {}
+export class UserContactsModule {}
