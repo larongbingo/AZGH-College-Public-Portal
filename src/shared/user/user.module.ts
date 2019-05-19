@@ -9,7 +9,7 @@ import { UserRepositoryProvider } from "./user.provider";
 import { UserController } from "./user.controller";
 import { UserDetailsModule } from "../user.details/user-details.module";
 import { UserGuardianModule } from "../user.guardian/user-guardian.module";
-import { UserPreviousSchool } from "../database/models/UserPreviousSchool.entity";
+import { UserPreviousSchoolModule } from "../user.previous.school/user-previous-school.module";
 
 @Module({
   imports: [
@@ -17,7 +17,7 @@ import { UserPreviousSchool } from "../database/models/UserPreviousSchool.entity
     UserContactsModule,
     UserDetailsModule,
     UserGuardianModule,
-    UserPreviousSchool,
+    UserPreviousSchoolModule,
   ],
   providers: [UserService, UserRepositoryProvider],
   exports: [UserService],
