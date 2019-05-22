@@ -10,7 +10,7 @@ import { EnrollStudentDto } from "./dto/enroll-student.dto";
 @Controller("enrollment")
 export class EnrollmentController {
   constructor(
-    @Inject() private readonly enrollmentService: EnrollmentService,
+    private readonly enrollmentService: EnrollmentService,
   ) {}
 
   @Post("enroll")
