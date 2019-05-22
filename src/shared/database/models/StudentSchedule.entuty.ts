@@ -29,6 +29,10 @@ export class StudentSchedule extends Model<StudentSchedule>
   @AllowNull(false)
   @Column(DataType.STRING)
   public scheduleCode: string;
+
+  @AllowNull(true)
+  @Column(DataType.STRING)
+  public grade: string;
   // End Model Columns
 
   // Model Relationships
