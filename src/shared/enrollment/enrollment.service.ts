@@ -2,6 +2,7 @@ import { Injectable, Inject, UnprocessableEntityException } from "@nestjs/common
 
 import { SubjectsService } from "../../shared/subjects/subjects.service";
 import { UserService } from "../../shared/user/user.service";
+import { User } from "../database/models/User.entity";
 
 @Injectable()
 export class EnrollmentService {
@@ -15,11 +16,8 @@ export class EnrollmentService {
    * @param userId the id of the user
    * @param subjectCode the code of the course the user wants to enroll
    */
-  public async enrollSubject(userId: string, subjectCode: string) {
-    const [subject, user] = await Promise.all([
-      this.subjectsService.findOneById(subjectCode),
-      this.userService.findOneById(userId),
-    ]);
+  public async enrollSubject(user: User, subjectCode: string) {
+    const subject = await this.subjectsService.findOneById(subjectCode);
 
     user.enrolledProgram = subject.subjectCode;
     await user.save();

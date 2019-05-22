@@ -2,7 +2,7 @@ import { Controller, Post, Body, UseGuards, Inject, Headers } from "@nestjs/comm
 import { AuthGuard } from "@nestjs/passport";
 
 import { UserEntity } from "../../shared/decorators/user-entity.decorator";
-import { IUser } from "../../shared/interfaces/models/IUser";
+import { User } from "../database/models/User.entity";
 
 import { EnrollmentService } from "./enrollment.service";
 import { EnrollStudentDto } from "./dto/enroll-student.dto";
@@ -15,8 +15,8 @@ export class EnrollmentController {
 
   @Post("enroll")
   @UseGuards(AuthGuard("bearer"))
-  public async enrollStudent(@Body() enrollStudentDto: EnrollStudentDto, @UserEntity() user: IUser) {
-    await this.enrollmentService.enrollSubject(user.userId, enrollStudentDto.subjectCode);
+  public async enrollStudent(@Body() enrollStudentDto: EnrollStudentDto, @UserEntity() user: User) {
+    await this.enrollmentService.enrollSubject(user, enrollStudentDto.subjectCode);
     return {iat: Date.now()};
   }
 }
