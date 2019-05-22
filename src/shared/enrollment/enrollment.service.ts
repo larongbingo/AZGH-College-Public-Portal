@@ -6,8 +6,8 @@ import { UserService } from "../../shared/user/user.service";
 @Injectable()
 export class EnrollmentService {
   constructor(
-    @Inject() private readonly subjectsService: SubjectsService,
-    @Inject() private readonly userService: UserService,
+    private readonly subjectsService: SubjectsService,
+    private readonly userService: UserService,
   ) {}
 
   /**
