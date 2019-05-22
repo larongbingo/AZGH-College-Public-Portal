@@ -8,7 +8,6 @@ import { User } from "../database/models/User.entity";
 export class EnrollmentService {
   constructor(
     private readonly subjectsService: SubjectsService,
-    private readonly userService: UserService,
   ) {}
 
   /**
