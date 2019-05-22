@@ -19,11 +19,4 @@ export class EnrollmentController {
     await this.enrollmentService.enrollSubject(user.userId, enrollStudentDto.subjectCode);
     return {iat: Date.now()};
   }
-
-  @Post("drop")
-  @UseGuards(AuthGuard("bearer"))
-  public async dropStudent(@Body() enrollStudentDt: EnrollStudentDto, @UserEntity() user: IUser) {
-    await this.enrollmentService.dropSubject(user.userId);
-    return {iat: Date.now()};
-  }
 }

@@ -26,15 +26,4 @@ export class EnrollmentService {
 
     return user;
   }
-
-  /**
-   * Removes or drops the assigned course to the user
-   * @param userId the id of the user
-   */
-  public async dropSubject(userId: string) {
-    const user = await this.userService.findOneById(userId);
-    user.enrolledProgram = null;
-    await user.save();
-    return user;
-  }
 }
