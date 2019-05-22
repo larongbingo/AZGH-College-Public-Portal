@@ -13,6 +13,7 @@ import { ISchedule } from "../../interfaces/models/ISchedule";
 
 import { Subject } from "./Subject.entity";
 import { User } from "./User.entity";
+import { Semester } from "./Semester.entity";
 
 @Table({
   tableName: "schedules",
@@ -31,12 +32,20 @@ export class Schedule extends Model<Schedule> implements ISchedule {
   @Column(DataType.STRING)
   public subjectCode: string;
 
+  @ForeignKey(() => Semester)
+  @AllowNull(false)
+  @Column(DataType.STRING)
+  public semesterCode: string;
+
   // End Model Columns
 
   // Model Relationships
 
   @BelongsTo(() => Subject)
   public subject: Subject;
+
+  @BelongsTo(() => Semester)
+  public semester: Semester;
 
   // End Model Relationships
 }
