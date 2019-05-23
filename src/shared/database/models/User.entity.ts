@@ -15,6 +15,7 @@ import {
   PrimaryKey,
   Table,
   Default,
+  BelongsToMany,
 } from "sequelize-typescript";
 
 import { IUser, UserType } from "../../interfaces/models/IUser";
@@ -27,6 +28,8 @@ import { UserDetails } from "./UserDetails.entity";
 import { UserGuardian } from "./UserGuardian.entity";
 import { UserPreviousSchool } from "./UserPreviousSchool.entity";
 import { UserPreviousWork } from "./UserPreviousWork.entity";
+import { Schedule } from "./Schedule.entity";
+import { StudentSchedule } from "./StudentSchedule.entuty";
 
 @Table({
   tableName: "users",
@@ -129,6 +132,9 @@ export class User extends Model<User> implements IUser {
 
   @HasOne(() => UserPreviousWork)
   public previousWork: UserPreviousWork;
+
+  @BelongsToMany(() => Schedule, () => StudentSchedule)
+  public schedules: Schedule[];
 
   // End Model Relationships
 
