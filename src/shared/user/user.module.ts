@@ -10,9 +10,11 @@ import { UserController } from "./user.controller";
 import { UserDetailsModule } from "../user.details/user-details.module";
 import { UserGuardianModule } from "../user.guardian/user-guardian.module";
 import { UserPreviousSchoolModule } from "../user.previous.school/user-previous-school.module";
+import { StudentScheduleModule } from "../student.schedule/student-schedule.module";
 
 @Module({
   imports: [
+    StudentScheduleModule,
     UserAddressModule,
     UserContactsModule,
     UserDetailsModule,
