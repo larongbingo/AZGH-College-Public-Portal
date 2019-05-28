@@ -69,8 +69,7 @@ export class User extends Model<User> implements IUser {
   @BeforeUpdate
   @BeforeCreate
   private static async hashPassword(instance: User) {
-    // @ts-ignore
-    if (instance.password !== instance._previousDataValues.password) {
+    if (instance.password !== instance.previous("password")) {
       instance.password = await hash(instance.password, 12);
     }
   }
