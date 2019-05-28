@@ -6,7 +6,12 @@ import {
   ForeignKey,
   Model,
   Table,
+  PrimaryKey,
+  BeforeCreate,
+  BeforeUpdate,
 } from "sequelize-typescript";
+import { Op } from "sequelize";
+import { generate } from "randomstring";
 
 import { IStudentSchedule } from "../../interfaces/models/IStudentSchedule";
 
@@ -19,7 +24,27 @@ import { User } from "./User.entity";
 })
 export class StudentSchedule extends Model<StudentSchedule>
   implements IStudentSchedule {
+  // Class Methods
+  @BeforeCreate
+  @BeforeUpdate
+  private static async generateId(instance: StudentSchedule) {
+    let studentSched;
+    let id;
+
+    do {
+      id = generate({charset: "alphanumeric", length: 30});
+      studentSched = await this.findOne({where: {studentScheduleId: {[Op.eq]: id}}});
+    } while(studentSched);
+    
+    instance.studentScheduleId = id;
+  }
+  // End Class Methods
+
   // Model Columns
+  @PrimaryKey
+  @Column(DataType.STRING)
+  public studentScheduleId: string;
+
   @ForeignKey(() => User)
   @AllowNull(false)
   @Column(DataType.STRING)

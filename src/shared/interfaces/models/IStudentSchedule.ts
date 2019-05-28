@@ -1,5 +1,10 @@
 export interface IStudentSchedule {
   /**
+   * The id of the enrollment
+   */
+  studentScheduleId: string;
+
+  /**
    * The id of the student
    * A Foreign Key from User
    * @see {@link ./IUser.ts}
