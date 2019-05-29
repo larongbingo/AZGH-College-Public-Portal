@@ -13,7 +13,7 @@ export class Semester extends Model<Semester> implements ISemester {
 
   @PrimaryKey
   @Column(DataType.STRING)
-  public semsterCode: string;
+  public semesterCode: string;
 
   @Column(DataType.STRING)
   public startingDate: Date;

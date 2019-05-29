@@ -1,5 +1,5 @@
 export interface ISemester {
-  semsterCode: string;
+  semesterCode: string;
   startingDate: Date;
   endingDate: Date;
 }
