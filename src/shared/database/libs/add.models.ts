@@ -15,6 +15,7 @@ import { UserDetails } from "../models/UserDetails.entity";
 import { UserGuardian } from "../models/UserGuardian.entity";
 import { UserPreviousSchool } from "../models/UserPreviousSchool.entity";
 import { UserPreviousWork } from "../models/UserPreviousWork.entity";
+import { Semester } from "../models/Semester.entity";
 
 export function addModels(sequelize: Sequelize) {
   sequelize.addModels([
@@ -25,6 +26,7 @@ export function addModels(sequelize: Sequelize) {
     Room,
     Schedule,
     StudentSchedule,
+    Semester,
     Subject,
     User,
     UserAddress,
