@@ -1,4 +1,4 @@
-import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
+import { Column, DataType, HasMany, Model, Table, PrimaryKey } from "sequelize-typescript";
 
 import { ISemester } from "../../interfaces/models/ISemester";
 
@@ -11,6 +11,7 @@ import { Schedule } from "./Schedule.entity";
 export class Semester extends Model<Semester> implements ISemester {
   // Model Columns
 
+  @PrimaryKey
   @Column(DataType.STRING)
   public semsterCode: string;
 
