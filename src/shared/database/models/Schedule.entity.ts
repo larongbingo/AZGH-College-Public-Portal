@@ -7,7 +7,10 @@ import {
   Model,
   PrimaryKey,
   Table,
+  BeforeCreate,
+  BeforeUpdate,
 } from "sequelize-typescript";
+import { generate } from "randomstring";
 
 import { ISchedule } from "../../interfaces/models/ISchedule";
 
@@ -20,6 +23,16 @@ import { Semester } from "./Semester.entity";
   paranoid: true,
 })
 export class Schedule extends Model<Schedule> implements ISchedule {
+  // Class Methods
+
+  @BeforeCreate
+  @BeforeUpdate
+  private static async generateId(instance: Schedule) {
+    instance.scheduleCode = `${new Date().getFullYear()}${generate({charset: "alphanumeric", length: 15})}`
+  }
+
+  // End Class Methods
+
   // Model Columns
 
   @PrimaryKey
