@@ -36,7 +36,6 @@ export class Schedule extends Model<Schedule> implements ISchedule {
   // Model Columns
 
   @PrimaryKey
-  @AllowNull(false)
   @Column(DataType.STRING)
   public scheduleCode: string;
 
