@@ -7,6 +7,8 @@ import {
   ForeignKey,
   Model,
   Table,
+  BeforeUpdate,
+  BeforeCreate,
 } from "sequelize-typescript";
 
 import { IAssignedInstructors } from "../../interfaces/models/IAssignedInstructors";
@@ -23,6 +25,8 @@ export class AssignedInstructors extends Model<AssignedInstructors>
   implements IAssignedInstructors {
   // Class Methods
 
+  @BeforeUpdate
+  @BeforeCreate
   private static async verifyAdminStatus(instance: AssignedInstructors) {
     const user = await User.findOne({
       where: { userId: { [Op.eq]: instance.userId } },
