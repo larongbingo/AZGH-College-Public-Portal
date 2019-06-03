@@ -32,9 +32,9 @@ export class AssignedInstructors extends Model<AssignedInstructors>
       throw new Error(`User ${instance.userId} does not exist`);
     }
 
-    if (user.type !== UserType.Admin) {
+    if (user.type !== UserType.Professor) {
       throw new Error(
-        `User ${instance.userId} does not have proper permissions`,
+        `User ${instance.userId} does not have proper credentials to be a professor`,
       );
     }
   }
